@@ -8,12 +8,12 @@
  */
 var binarySearch = function binarySearch(arr, val) {
    var lo, hi, mid;
-   if arr.length === 0 {
+    if (arr.length === 0) {
       return false;
    }
    lo = arr[0];
    hi = arr[arr.length-1];
-   if val > hi || val < lo {
+    if (val > hi || val < lo) {
       return false;
    }
    mid = arr[Math.floor(arr.lengh/2)];
