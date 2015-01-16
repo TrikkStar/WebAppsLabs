@@ -25,6 +25,17 @@ var binarySearch = function binarySearch(arr, val) {
   else{
     mid = arr[Math.floor(arr.lengh/2)];
   }
+    if (arr.length ===2){
+	if (val===lo){
+	    return true;
+	}
+	if (val===hi){
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
   counter = 0;
 
   while (counter < 1000) {     // You should change this with a proper condition
