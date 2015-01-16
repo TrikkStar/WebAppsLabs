@@ -7,21 +7,39 @@
  * BINARY SEARCH
  */
 var binarySearch = function binarySearch(arr, val) {
-   var lo, hi, mid;
-    if (arr.length === 0) {
-      return false;
-   }
-   lo = arr[0];
-   hi = arr[arr.length-1];
-    if (val > hi || val < lo) {
-      return false;
-   }
-   mid = arr[Math.floor(arr.lengh/2)];
-   // You may need to add things here
+  var lo, hi, mid, counter;
 
-   while (false) {     // You should change this with a proper condition
+  if (arr.length === 0){
+    return false;
+  }
+  lo = arr[0];
+  hi = arr[arr.length-1];
+
+  if (val > hi || val < lo){
+    return false;
+  }
+
+  if (arr.length === 1){
+    mid = arr[0]
+  }
+  else{
+    mid = arr[Math.floor(arr.lengh/2)];
+  }
+  counter = 0;
+
+  while (counter < 1000) {     // You should change this with a proper condition
       // You will need to add things here
-   }
+    if (val === mid){
+    return true;      
+    }
+    else if (val > mid && val === hi){
+        return true;
+      }
+    else if(val < mid && val === lo){
+      return true; 
+    }
+    counter ++; 
+  }
 
    // You may need to add things here
 
