@@ -23,7 +23,7 @@ var binarySearch = function binarySearch(arr, val) {
     mid = arr[0]
   }
   else{
-    mid = arr[Math.floor(arr.lengh/2)];
+    mid = arr[Math.floor(arr.length/2)];
   }
     if (arr.length ===2){
 	if (val===lo){
