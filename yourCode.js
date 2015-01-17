@@ -43,14 +43,15 @@ var binarySearch = function binarySearch(arr, val) {
     		return true;
     	}
         lo = mid;
-        mid = Math.floor((hi-lo)/2);
+        mid = lo+Math.floor((hi-lo)/2);
+
     }
     else if(val < arr[mid]){
       if(val === arr[lo]){
     		return true;
     	}
         hi = mid;
-        mid = Math.floor((hi-lo)/2);
+        mid = lo+Math.floor((hi-lo)/2);
     }
     else{
     	return false; 
