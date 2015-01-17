@@ -34,20 +34,26 @@ var binarySearch = function binarySearch(arr, val) {
   }
   counter = 0;
 
-  while (counter < 1000){    
+  while (hi - lo !==1){    
     if (val === arr[mid]){
     return true;      
     }
     else if (val > arr[mid]){
+	if(val > arr[hi]){
+	    return false;
+	}
     	if(val === arr[hi]){
     		return true;
     	}
         lo = mid;
         mid = lo+Math.floor((hi-lo)/2);
-
     }
     else if(val < arr[mid]){
-      if(val === arr[lo]){
+	if(val < arr[lo]){
+	    return false;
+	}
+     
+	if(val === arr[lo]){
     		return true;
     	}
         hi = mid;
@@ -56,13 +62,24 @@ var binarySearch = function binarySearch(arr, val) {
     else{
     	return false; 
     }
-    counter ++; 
+    counter ++;
+      if(counter>=1000){
+	  console.log("exceeded counter");
+	  break;
+	  
+      }
+      return false;
   }
 
    // You may need to add things here
 
 };
-
+console.log("looking for 15");
+console.log("result",binarySearch([10,11,12,13,14],15));
+console.log("looking for 9");
+console.log("returns",binarySearch([10,11,12,13,14],9));
+console.log("looking for 12");
+console.log("returns",binarySearch([10,11,13,14],12));
 /*
  * COUNTING TAGS
  */
