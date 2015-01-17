@@ -26,14 +26,6 @@ var binarySearch = function binarySearch(arr, val) {
     mid = Math.floor(arr.length/2);
   }
 
-  if (arr.length === 2){
-  	if (val === arr[lo] || val === arr[hi]){
-  		return true;
-    }
-	return false;
-  }
-  counter = 0;
-
   while (hi-lo !== 1){     
     if (val === arr[mid]){
     	return true;      
@@ -55,17 +47,14 @@ var binarySearch = function binarySearch(arr, val) {
     else{
     	return false; 
     }
-    /*counter ++;
-    if(counter>=1000){
-		console.log("exceeded counter");
-		break;  
-    }*/
   }
+
   if ((val === arr[hi]) || (val === arr[lo])){
   	return true;
   }
   return false;
 };
+
 /*
  * COUNTING TAGS
  */
