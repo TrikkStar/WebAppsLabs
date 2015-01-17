@@ -12,42 +12,48 @@ var binarySearch = function binarySearch(arr, val) {
   if (arr.length === 0){
     return false;
   }
-  lo = arr[0];
-  hi = arr[arr.length-1];
+  lo = 0;
+  hi = arr.length-1;
 
-  if (val > hi || val < lo){
+  if (val > arr[hi] || val < arr[lo]){
     return false;
   }
 
   if (arr.length === 1){
-    mid = arr[0]
+    mid = 0
   }
   else{
-    mid = arr[Math.floor(arr.length/2)];
+    mid = Math.floor(arr.length/2);
   }
-    if (arr.length ===2){
-	if (val===lo){
-	    return true;
-	}
-	if (val===hi){
-	    return true;
-	}
-	else{
-	    return false;
-	}
+
+  if (arr.length === 2){
+  	if (val === arr[lo] || val === arr[hi]){
+  		return true;
     }
+	return false;
+  }
   counter = 0;
 
-  while (counter < 1000) {     // You should change this with a proper condition
-      // You will need to add things here
-    if (val === mid){
+  while (counter < 1000){    
+    if (val === arr[mid]){
     return true;      
     }
-    else if (val > mid && val === hi){
-        return true;
-      }
-    else if(val < mid && val === lo){
-      return true; 
+    else if (val > arr[mid]){
+    	if(val === arr[hi]){
+    		return true;
+    	}
+        lo = mid;
+        mid = Math.floor((hi-lo)/2);
+    }
+    else if(val < arr[mid]){
+      if(val === arr[lo]){
+    		return true;
+    	}
+        hi = mid;
+        mid = Math.floor((hi-lo)/2);
+    }
+    else{
+    	return false; 
     }
     counter ++; 
   }
