@@ -62,19 +62,13 @@ var countTags = function countTags(items) {
 	var tagCounts = new Object();
 	if (items.length != 0){
 		for (var i = items.length - 1; i >= 0; i--) {
-			
 			if (items[i].hasOwnProperty("tags")){
-				
 				if (Array.isArray(items[i].tags) && items[i].tags.length !== 0){
-					
 					for (var j = items[i].tags.length - 1; j >= 0; j--) {
-						
 						if (tagCounts.hasOwnProperty(items[i].tags[j])){
-							
 							tagCounts[items[i].tags[j]] += 1;
 						}
 						else{
-							
 							tagCounts[items[i].tags[j]] = 1;
 						}
 					};
@@ -89,5 +83,16 @@ var countTags = function countTags(items) {
  * EXTRACT HASHTAGS
  */
 var extractHashTags = function extractHashTags(str) {
-
+	var tags, raw;
+	tags = [];
+	raw = /#[a-z]+\s/ig.exec(str); 
+	if(raw != null){
+		for (var i = raw.length - 1; i >= 0; i--) {
+			var temp = /[a-z]+/i.exec(raw[i]);
+			if (tags.indexOf(temp) === -1){
+				tags += temp;
+			}
+		};
+	}
+	return tags;
 };
