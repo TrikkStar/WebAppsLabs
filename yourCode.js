@@ -89,8 +89,12 @@ var extractHashTags = function extractHashTags(str) {
 	if(raw != null){
 		for (var i = raw.length - 1; i >= 0; i--) {
 			var temp = /[a-z]+/i.exec(raw[i]);
-			if (tags.indexOf(temp) === -1){
-				tags += temp;
+			//console.log("temp", temp);
+			//console.log("equality ", tags.indexOf(temp) === -1);
+			if (tags.indexOf(temp[0]) === -1){
+				tags.push(temp[0]);
+				console.log("tags", tags);
+				console.log("test ", tags === ["one"]);
 			}
 		};
 	}
