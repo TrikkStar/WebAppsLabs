@@ -59,14 +59,24 @@ var binarySearch = function binarySearch(arr, val) {
  * COUNTING TAGS
  */
 var countTags = function countTags(items) {
-   // Declare your local variables here. One was done for you.
 	var tagCounts = new Object();
 
 	if (items.length != 0){
-		
+		for (var i = items.length - 1; i >= 0; i--) {
+			if (items[i].hasOwnProperty("tag")){
+				if (items[i].tag.isArray()){
+					for (var j = items[i].tag.length - 1; j >= 0; j--) {
+						if (tagCounts.hasOwnProperty(items[i].tag[j])){
+							tagCounts.items[i].tag[j] ++;
+						}
+						else{
+							tagCounts.items[i].tag[j] = 1;
+						}
+					};
+				}
+			}
+		};
 	}
-
-
 	return tagCounts;
 };
 
