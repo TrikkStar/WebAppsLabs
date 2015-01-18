@@ -60,17 +60,22 @@ var binarySearch = function binarySearch(arr, val) {
  */
 var countTags = function countTags(items) {
 	var tagCounts = new Object();
-
 	if (items.length != 0){
 		for (var i = items.length - 1; i >= 0; i--) {
-			if (items[i].hasOwnProperty("tag")){
-				if (items[i].tag.isArray()){
-					for (var j = items[i].tag.length - 1; j >= 0; j--) {
-						if (tagCounts.hasOwnProperty(items[i].tag[j])){
-							tagCounts.items[i].tag[j] ++;
+			
+			if (items[i].hasOwnProperty("tags")){
+				
+				if (Array.isArray(items[i].tags) && items[i].tags.length !== 0){
+					
+					for (var j = items[i].tags.length - 1; j >= 0; j--) {
+						
+						if (tagCounts.hasOwnProperty(items[i].tags[j])){
+							
+							tagCounts[items[i].tags[j]] += 1;
 						}
 						else{
-							tagCounts.items[i].tag[j] = 1;
+							
+							tagCounts[items[i].tags[j]] = 1;
 						}
 					};
 				}
