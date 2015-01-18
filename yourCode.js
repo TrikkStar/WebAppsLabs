@@ -85,19 +85,12 @@ var countTags = function countTags(items) {
 var extractHashTags = function extractHashTags(str) {
 	var tags, raw;
 	tags = [];
-	raw = /#[a-z]+/ig.exec(str); 
-	console.log("raw ", raw);
+	raw = str.match(/#[a-z]+/ig);
 	if(raw != null){
-		console.log("here");
 		for (var i = raw.length - 1; i >= 0; i--) {
-			console.log("where");
 			var temp = /[a-z]+/i.exec(raw[i]);
-			console.log("temp", temp);
-			console.log("equality ", tags.indexOf(temp) === -1);
 			if (tags.indexOf(temp[0]) === -1){
 				tags.push(temp[0]);
-				console.log("tags", tags);
-				console.log("test ", tags[0] === "one");
 			}
 		};
 	}
