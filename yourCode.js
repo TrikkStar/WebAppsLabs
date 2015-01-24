@@ -12,7 +12,12 @@ var makeStack = function() {
 		},
 
 		pop: function pop(){
-
+			if (stk.isEmpty()){
+				throw new Error ("Attempt to pop from empty stack");
+			} else {
+					return values.pop();
+			}
+			
 		},
 		
 		isEmpty: function isEmpty(){
