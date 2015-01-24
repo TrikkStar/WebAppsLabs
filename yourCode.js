@@ -1,12 +1,12 @@
 /*
- * Name 1: YourNameHere
- * Name 2: YourNameHere
+ * Name 1: Noah Thederahn
+ * Name 2: Shelby Babcock
  */
 // All your code will go here
-var makeStack = function() {
+// var makeStack = function() {
 
 
-};
+// };
 
 
 // Do NOT change anything below this line.
