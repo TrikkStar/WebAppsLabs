@@ -4,7 +4,20 @@
  */
 // All your code will go here
 var makeStack = function() {
-	var stk = new Object();
+	var stk = {
+		push: function push(){
+
+		},
+
+		pop: function pop(){
+
+		},
+		
+		isEmpty: function isEmpty(){
+
+		}
+	}
+
 
 	return stk;
 };
