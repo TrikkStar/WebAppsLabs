@@ -17,15 +17,12 @@ var makeStack = function() {
 			} else {
 					return values.pop();
 			}
-			
 		},
 		
 		isEmpty: function isEmpty(){
-			return values.length ===0;
+			return values.length === 0;
 		}
 	}
-
-
 	return stk;
 };
 
