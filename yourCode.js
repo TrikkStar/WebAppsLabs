@@ -4,9 +4,11 @@
  */
 // All your code will go here
 var makeStack = function() {
+	var values = [];
 	var stk = {
-		push: function push(){
-
+		push: function push(el){
+			values.push(el);
+			return stk;
 		},
 
 		pop: function pop(){
@@ -14,7 +16,7 @@ var makeStack = function() {
 		},
 		
 		isEmpty: function isEmpty(){
-
+			return values.length ===0;
 		}
 	}
 
