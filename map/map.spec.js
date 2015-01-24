@@ -19,3 +19,11 @@ function randomString(len) {
 // DO NOT CHANGE ANYTHING ABOVE THIS LINE
 
 // Add your tests below
+describe('Your code for maps', function() {
+   it('defines a variable makeMap', function() {
+      expect(function() { makeMap; }).to.not.throw(Error);
+   });
+   it('actually defines a function makeMap', function() {
+      expect(makeMap).to.be.a('function');
+   });
+});
