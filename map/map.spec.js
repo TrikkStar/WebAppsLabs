@@ -39,3 +39,11 @@ describe('Your makeMap function', function() {
       });
    });
 });
+
+describe('Map methods:', function() {
+    var map;
+    beforeEach(function() {
+        map = makeMap();
+    });
+    
+ });
