@@ -27,7 +27,13 @@ var makeMap = function() {
    			}
    		},
    		update: function update(key, value){
-
+			if(this.has(key)){
+   				storedPairs[key] = value;
+   				return this;
+   			}
+   			else{
+   				throw new Error ("Attempt to update nonexistant key");
+   			}
    		},
    		remove: function remove (key){
    			if(this.has(key)){
@@ -40,10 +46,6 @@ var makeMap = function() {
    	}
    // Use this object to store the key-value pairs:
    var storedPairs = {};
-
-   // Add local functions here
-  
-   // Prepare the object o before returning it
 
    return o;
 }
