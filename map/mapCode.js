@@ -26,7 +26,6 @@ var makeMap = function() {
    	}
    // Use this object to store the key-value pairs:
    var storedPairs = {};
-
    // Add local functions here
   
    // Prepare the object o before returning it
