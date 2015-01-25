@@ -88,4 +88,10 @@ describe('Map methods:', function() {
    it('remove throws an error if key is not there',function(){
        expect(function(){map.remove();}).to.throw(Error);
    });
+   it('key can have value of undefined or null',function(){
+      map.add(a,undefined);
+      expect(map.has(a)).to.equal(true);
+      map.add(b,null);
+      expect(map.has(b)).to.equal(true);
+   });
 });
