@@ -12,7 +12,10 @@ var makeMap = function() {
    			return storedPairs.hasOwnProperty(key);
    		},
    		lookup: function lookup(key){
-
+   			if(storedPairs.hasOwnProperty(key)){
+   				return storedPairs[key];
+   			}
+   			throw new Error ("Attempt to lookup nonexistant key");
    		},
    		add: function add(key, value){
 			storedPairs[key] = value;
@@ -26,6 +29,7 @@ var makeMap = function() {
    	}
    // Use this object to store the key-value pairs:
    var storedPairs = {};
+
    // Add local functions here
   
    // Prepare the object o before returning it
