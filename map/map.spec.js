@@ -27,3 +27,15 @@ describe('Your code for maps', function() {
       expect(makeMap).to.be.a('function');
    });
 });
+
+describe('Your makeMap function', function() {
+   var map = makeMap();
+   it('returns an object', function() {
+      expect(map).to.be.a('object');
+   });
+   it('returns an object with methods has, lookup, add, update, and remove', function() {
+      ['has', 'lookup', 'add', 'update', 'remove'].forEach(function(key) {
+         expect(map[key]).to.be.a('function');
+      });
+   });
+});
