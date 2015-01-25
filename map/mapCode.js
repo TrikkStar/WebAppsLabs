@@ -12,19 +12,29 @@ var makeMap = function() {
    			return storedPairs.hasOwnProperty(key);
    		},
    		lookup: function lookup(key){
-   			if(storedPairs.hasOwnProperty(key)){
+   			if(this.has(key)){
    				return storedPairs[key];
    			}
    			throw new Error ("Attempt to lookup nonexistant key");
    		},
    		add: function add(key, value){
-			storedPairs[key] = value;
+			if(!this.has(key)){
+   				storedPairs[key] = value;
+   			}
+   			else{
+   				throw new Error ("Attempt to assign to pre-existing key");
+   			}
    		},
    		update: function update(key, value){
 
    		},
    		remove: function remove (key){
-   		
+   			if(this.has(key)){
+   				delete storedPairs[key];
+   			}
+   			else{
+   				throw new Error ("Attempt to delete nonexistant key");
+   			}
    		}
    	}
    // Use this object to store the key-value pairs:
