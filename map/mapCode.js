@@ -20,6 +20,7 @@ var makeMap = function() {
    		add: function add(key, value){
 			if(!this.has(key)){
    				storedPairs[key] = value;
+   				return this;
    			}
    			else{
    				throw new Error ("Attempt to assign to pre-existing key");
