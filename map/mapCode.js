@@ -7,7 +7,23 @@
 var makeMap = function() {
 // All your code will go inside this function
    // This object should contain the methods you want to expose:
-   var o;
+   var o = {
+   		has: function has(key){
+
+   		},
+   		lookup: function lookup(key){
+
+   		},
+   		add: function add(key, value){
+
+   		},
+   		update: function update(key, value){
+
+   		},
+   		remove: function remove (key){
+   		
+   		}
+   	}
    // Use this object to store the key-value pairs:
    var storedPairs;
 
