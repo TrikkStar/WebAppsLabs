@@ -9,13 +9,13 @@ var makeMap = function() {
    // This object should contain the methods you want to expose:
    var o = {
    		has: function has(key){
-
+   			return storedPairs.hasOwnProperty(key);
    		},
    		lookup: function lookup(key){
 
    		},
    		add: function add(key, value){
-
+			storedPairs[key] = value;
    		},
    		update: function update(key, value){
 
@@ -25,12 +25,10 @@ var makeMap = function() {
    		}
    	}
    // Use this object to store the key-value pairs:
-   var storedPairs;
-
-   // Add initialization code here
+   var storedPairs = {};
 
    // Add local functions here
-
+  
    // Prepare the object o before returning it
 
    return o;
