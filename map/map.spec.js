@@ -41,9 +41,51 @@ describe('Your makeMap function', function() {
 });
 
 describe('Map methods:', function() {
-    var map;
-    beforeEach(function() {
-        map = makeMap();
-    });
-    
- });
+   var map;
+   var a;
+   var b;
+   beforeEach(function() {
+      map = makeMap();
+      a = randomString(5);
+      b = randomString(4);
+   });
+   it('returns true if key is present', function(){
+      map.add(a,5);
+      expect(map.has(a)).to.equal(true);
+   });
+   it('returns false if key is not present',function(){
+      expect(map.has(a)).to.equal(false);
+   });
+   it('returns value stored at key',function(){
+      map.add(a,5);
+      expect(map.lookup(a)).to.equal(5);
+   });
+   it('returns error if key does not exist',function(){
+      map.add(a,5);
+      expect(map.lookup(b)).to.throw(Error);
+   });
+   it('adds key and value to map and returns map',function(){
+      expect(map.add(a,5)).to.equal(map);
+   });
+   it('add throws an error if the key already exists',function(){
+      map.add(a,5);
+      expect(map.add(a,5)).to.throw(Error);
+   });
+   it('update returns the map',function(){
+      map.add(a,5);
+      expect(map.update(a,6)).to.equal(map);
+   });
+   it('update changes the value of a key',function(){
+      map.add(a,5);
+      map.update(a,7);
+      expect(map.lookup(a)).to.equal(7);
+   });
+   it('remove removes pair stored at key',function(){
+      map.add(a,5);
+      map.remove(a);
+      expect(map.has(a)).to.equal(false);
+   });
+   it('remove throws an error if key is not there',function(){
+      expect(map.remove(a)).to.throw(Error);
+   });
+});
