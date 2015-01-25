@@ -62,14 +62,14 @@ describe('Map methods:', function() {
    });
    it('returns error if key does not exist',function(){
       map.add(a,5);
-      expect(map.lookup(b)).to.throw(Error);
+       expect(function(){map.lookup();}).to.throw(Error);
    });
    it('adds key and value to map and returns map',function(){
       expect(map.add(a,5)).to.equal(map);
    });
    it('add throws an error if the key already exists',function(){
       map.add(a,5);
-      expect(map.add(a,5)).to.throw(Error);
+       expect(function(){map.add();}).to.throw(Error);
    });
    it('update returns the map',function(){
       map.add(a,5);
@@ -86,6 +86,6 @@ describe('Map methods:', function() {
       expect(map.has(a)).to.equal(false);
    });
    it('remove throws an error if key is not there',function(){
-      expect(map.remove(a)).to.throw(Error);
+       expect(function(){map.remove();}).to.throw(Error);
    });
 });
