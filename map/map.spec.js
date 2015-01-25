@@ -69,7 +69,7 @@ describe('Map methods:', function() {
    });
    it('add throws an error if the key already exists',function(){
       map.add(a,5);
-       expect(function(){map.add();}).to.throw(Error);
+       expect(function(){map.add(a,9);}).to.throw(Error);
    });
    it('update returns the map',function(){
       map.add(a,5);
