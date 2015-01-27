@@ -51,7 +51,10 @@ function makeNewTask(){
 }
 
 function makeTaskFromObject(obj){
-
+	var tsk = Task.new();
+	tsk.setTitle(obj.title);
+	tsk.addTags(obj.tags);
+	return tsk;
 }
 
 function makeTaskFromString(str){
@@ -117,7 +120,7 @@ proto = {
 		arr.forEach(this.addTag(currentValue));
 	},
 	clone: function clone(){
-		var cln = makeNewTask();
+		var cln = Task.new();
 		cln.title = this.title;
 		cln.completedTime = this.completedTime;
 		cln.tags = this.tags;
