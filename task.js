@@ -50,7 +50,7 @@ function makeNewTask(){
 	return tsk;
 }
 
-function makeTaskFromObject(o){
+function makeTaskFromObject(obj){
 
 }
 
@@ -65,28 +65,63 @@ function makeTaskFromString(str){
 
 proto = {
 	setTitle: function setTitle(str){
-
+		str.trim();
+		this.title = str;
+		return this;
 	},
 	isCompleted: function isCompleted(){
-
+		return this.completedTime !== null;
 	},
 	toggleCompleted: function toggleCompleted(){
-
+		if (this.this.completedTime === null){
+			this.completedTime = new Date();
+		} else{
+			this.this.completedTime = null;
+		}
+		return this;
 	},
 	hasTag: function hasTag(str){
-
+		this.tags.forEach(function(){
+			if (currentValue === str){
+				return true;
+			}
+		});
+		return false;
+	},
+	addTag: function addTag(str){
+		if (!this.hasTag(str)){
+			this.tags.push(str);
+		}
+	},
+	removeTag: function removeTag(str){
+		if (this.hasTag(str)){
+			this.tags.splice(this.tags.indexOf(str),1);
+		}
+		return this;
+	},
+	toggleTag: function toggleTag(str){
+		if (this.hasTag(str)){
+			this.removeTag(str);
+		} else{
+			this.tags.push(str);
+		}
+		return this;
 	},
 	addTags: function addTags(arr){
-
-	},
+		arr.forEach(this.addTag(currentValue));
+	}
 	removeTags: function removeTags(arr){
-
-	},
+		arr.forEach(this.removeTag(currentValue));
+	}
 	toggleTags: function toggleTags(arr){
-
-	},
+		arr.forEach(this.addTag(currentValue));
+	}
 	clone: function clone(){
-
+		var cln = makeNewTask();
+		cln.title = this.title;
+		cln.completedTime = this.completedTime;
+		cln.tags = this.tags;
+		return cln;
 	}
 };
 
