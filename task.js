@@ -17,7 +17,6 @@ function processString(s) {
       tags.push(tag);
       return "";
    });
-
    return { title: title, tags: tags };
 }
 
@@ -43,8 +42,30 @@ function makeTaskFromString(str){
  */
 
 proto = {
-   // Add instance methods here
+	setTitle: function setTitle(str){
 
+	},
+	isCompleted: function isCompleted(){
+
+	},
+	toggleCompleted: function toggleCompleted(){
+
+	},
+	hasTag: function hasTag(str){
+
+	},
+	addTags: function addTags(arr){
+
+	},
+	removeTags: function removeTags(arr){
+
+	},
+	toggleTags: function toggleTags(arr){
+
+	},
+	clone: function clone(){
+		
+	}
 };
 
 
