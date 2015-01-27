@@ -75,7 +75,7 @@ proto = {
 	toggleCompleted: function toggleCompleted(){
 		if (this.this.completedTime === null){
 			this.completedTime = new Date();
-		} else{
+		} else {
 			this.this.completedTime = null;
 		}
 		return this;
@@ -95,27 +95,27 @@ proto = {
 	},
 	removeTag: function removeTag(str){
 		if (this.hasTag(str)){
-			this.tags.splice(this.tags.indexOf(str),1);
+			this.tags.splice(this.tags.indexOf(str), 1);
 		}
 		return this;
 	},
 	toggleTag: function toggleTag(str){
 		if (this.hasTag(str)){
 			this.removeTag(str);
-		} else{
+		} else {
 			this.tags.push(str);
 		}
 		return this;
 	},
 	addTags: function addTags(arr){
 		arr.forEach(this.addTag(currentValue));
-	}
+	},
 	removeTags: function removeTags(arr){
 		arr.forEach(this.removeTag(currentValue));
-	}
+	},
 	toggleTags: function toggleTags(arr){
 		arr.forEach(this.addTag(currentValue));
-	}
+	},
 	clone: function clone(){
 		var cln = makeNewTask();
 		cln.title = this.title;
