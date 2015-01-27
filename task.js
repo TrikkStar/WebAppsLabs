@@ -25,24 +25,24 @@ function processString(s) {
  *       Constructors
  */
 
-function makeNewTask() {
-
-};
-
-function makeTaskFromObject(o)
- {
+function makeNewTask(){
 
 }
 
-function makeTaskFromString(str)
-{}
+function makeTaskFromObject(o){
+
+}
+
+function makeTaskFromString(str){
+
+}
 
 
 /*
  *       Prototype / Instance methods
  */
 
-proto={
+proto = {
    // Add instance methods here
 
 };
