@@ -18,7 +18,4 @@ describe('Your makeNewTask function', function() {
 	it('returns an object with correct keys', function(){
 		expect(task).to.have.ownProperty('title', 'completedTime', 'tags', 'id');
 	});
-	it('is an instance of the Task constructor', function(){
-		expect(task).to.be.an.instanceof(Task.new());
-	})
 });
