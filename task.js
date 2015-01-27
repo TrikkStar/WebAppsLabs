@@ -25,7 +25,29 @@ function processString(s) {
  */
 
 function makeNewTask(){
+	var	tsk, val;
+	
+	tsk = Object.create(proto);
+	val = 0;
+	tsk.title = "";
+	tsk.completedTime = null;
+	Object.defineProperty(tsk, "tags", {
+		configurable: false,
+		writeable: false,
+		enumerable: false,
+		value: []
+	});
+	Object.defineProperty(tsk, "id", {
+		configurable: false,
+		writeable: false,
+		value: function gitValue(){
+			val += 1;
+			return val;
+		}
+	});
 
+	Object.preventExtensions(tsk);
+	return tsk;
 }
 
 function makeTaskFromObject(o){
@@ -64,7 +86,7 @@ proto = {
 
 	},
 	clone: function clone(){
-		
+
 	}
 };
 
