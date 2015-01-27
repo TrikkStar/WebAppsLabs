@@ -26,7 +26,7 @@ function processString(s) {
 
 function makeNewTask(){
 	var	tsk, val;
-	
+
 	tsk = Object.create(proto);
 	val = 0;
 	tsk.title = "";
