@@ -84,8 +84,8 @@ proto = {
 		return this;
 	},
 	hasTag: function hasTag(str){
-		this.tags.forEach(function(){
-			if (currentValue === str){
+		this.tags.forEach(function (item, i){
+			if (item === str){
 				return true;
 			}
 		});
@@ -111,13 +111,25 @@ proto = {
 		return this;
 	},
 	addTags: function addTags(arr){
-		arr.forEach(this.addTag(currentValue));
+		if (typeof arr === 'object'){
+			arr.forEach(function (item, i){
+				this.addTag(item);
+			});
+		}
 	},
 	removeTags: function removeTags(arr){
-		arr.forEach(this.removeTag(currentValue));
+		if (typeof arr === 'object'){
+			arr.forEach(function (item, i){
+				this.removeTags(item);
+			});
+		}
 	},
 	toggleTags: function toggleTags(arr){
-		arr.forEach(this.addTag(currentValue));
+		if (typeof arr === 'object'){
+			arr.forEach(function (item, i){
+				this.toggleTags(item);
+			});
+		}
 	},
 	clone: function clone(){
 		var cln = Task.new();
