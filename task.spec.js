@@ -31,9 +31,12 @@ describe('Your makeNewTask function', function() {
 });
 
 describe('Your makeTaskFromObject function', function() {
-	var obj, task, str;
+	var obj, task, str, tags, t1, t2;
+	t1 = randomString(10);
+	t2 = randomString(10);
 	str = randomString(5);
-	obj = {'title': str, 'id': 'ToBeDetermined'};
+	tags = [t1, t2];
+	obj = {'title': str, 'tags': tags};
 	task = Task.fromObject(obj);
 
 	it('returns an object', function(){
@@ -45,8 +48,8 @@ describe('Your makeTaskFromObject function', function() {
 	it('returns an object with correct title value', function(){
 		expect(task.title).to.equal(str);
 	});
-	// it('returns an object with correct tags', function(){
-	// 	//unsure how to impliment this test, need to do later. 
-	// 	//Possibly in a diffrent testing case
-	// });
+	it('returns an object with correct tags', function(){
+		expect(task.tags).to.have.length(2);
+		expect(task.tags).to.have.deep.property(t2);
+	});
 });
