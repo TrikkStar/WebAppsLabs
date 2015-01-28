@@ -67,14 +67,12 @@ function makeTaskFromString(str){
  */
 
 proto = {
-	
 	setTitle: function setTitle(str){
 		"use strict";
 		str.trim();
 		this.title = str;
 		return this;
 	},
-
 	isCompleted: function isCompleted(){
 		"use strict";
 		return this.completedTime !== null;
@@ -94,7 +92,7 @@ proto = {
 			if (item === str){
 				return true;
 			}
-		});
+		}, this);
 		return false;
 	},
 	addTag: function addTag(str){
@@ -122,22 +120,22 @@ proto = {
 	addTags: function addTags(arr){
 		"use strict";
 		console.log('this1: ', Object.prototype.toString.apply(this));
-			arr.forEach(function (item, i){
-				console.log('this2: ', Object.prototype.toString.apply(this));
-				this.addTag(item);
-		});
+		arr.forEach(function (item, i){
+			console.log('this2: ', Object.prototype.toString.apply(this));
+			this.addTag(item);
+		}, this);
 	},
 	removeTags: function removeTags(arr){
 		"use strict";
-			arr.forEach(function (item, i){
-				this.removeTag(item);
-			});
+		arr.forEach(function (item, i){
+			this.removeTag(item);
+		}, this);
 	},
 	toggleTags: function toggleTags(arr){
 		"use strict";
-			arr.forEach(function (item, i){
-				this.toggleTag(item);
-			});
+		arr.forEach(function (item, i){
+			this.toggleTag(item);
+		}, this);
 	},
 	clone: function clone(){
 		"use strict";
