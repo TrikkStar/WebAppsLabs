@@ -67,23 +67,29 @@ function makeTaskFromString(str){
  */
 
 proto = {
+	
 	setTitle: function setTitle(str){
+		"use strict";
 		str.trim();
 		this.title = str;
 		return this;
 	},
+
 	isCompleted: function isCompleted(){
+		"use strict";
 		return this.completedTime !== null;
 	},
 	toggleCompleted: function toggleCompleted(){
-		if (this.this.completedTime === null){
+		"use strict";
+		if (this.completedTime === null){
 			this.completedTime = new Date();
 		} else {
-			this.this.completedTime = null;
+			this.completedTime = null;
 		}
 		return this;
 	},
 	hasTag: function hasTag(str){
+		"use strict";
 		this.tags.forEach(function (item, i){
 			if (item === str){
 				return true;
@@ -92,17 +98,20 @@ proto = {
 		return false;
 	},
 	addTag: function addTag(str){
+		"use strict";
 		if (!this.hasTag(str)){
 			this.tags.push(str);
 		}
+		return this;
 	},
 	removeTag: function removeTag(str){
+		"use strict";
 		if (this.hasTag(str)){
 			this.tags.splice(this.tags.indexOf(str), 1);
 		}
-		return this;
 	},
 	toggleTag: function toggleTag(str){
+		"use strict";
 		if (this.hasTag(str)){
 			this.removeTag(str);
 		} else {
@@ -111,27 +120,27 @@ proto = {
 		return this;
 	},
 	addTags: function addTags(arr){
-		if (typeof arr === 'object'){
+		"use strict";
+		console.log('this1: ', Object.prototype.toString.apply(this));
 			arr.forEach(function (item, i){
+				console.log('this2: ', Object.prototype.toString.apply(this));
 				this.addTag(item);
-			});
-		}
+		});
 	},
 	removeTags: function removeTags(arr){
-		if (typeof arr === 'object'){
+		"use strict";
 			arr.forEach(function (item, i){
-				this.removeTags(item);
+				this.removeTag(item);
 			});
-		}
 	},
 	toggleTags: function toggleTags(arr){
-		if (typeof arr === 'object'){
+		"use strict";
 			arr.forEach(function (item, i){
-				this.toggleTags(item);
+				this.toggleTag(item);
 			});
-		}
 	},
 	clone: function clone(){
+		"use strict";
 		var cln = Task.new();
 		cln.title = this.title;
 		cln.completedTime = this.completedTime;
