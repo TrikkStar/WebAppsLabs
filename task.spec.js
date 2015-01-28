@@ -50,6 +50,7 @@ describe('Your makeTaskFromObject function', function() {
 	});
 	it('returns an object with correct tags', function(){
 		expect(task.tags).to.have.length(2);
-		expect(task.tags).to.have.deep.property(t2);
+		expect(task.tags).to.include(t1);
+		expect(task.tags).to.include(t2);
 	});
 });
