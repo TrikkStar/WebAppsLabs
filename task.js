@@ -58,7 +58,7 @@ function makeTaskFromObject(obj){
 }
 
 function makeTaskFromString(str){
-
+	return Task.fromObject(processString(str));
 }
 
 
@@ -119,9 +119,7 @@ proto = {
 	},
 	addTags: function addTags(arr){
 		"use strict";
-		console.log('this1: ', Object.prototype.toString.apply(this));
 		arr.forEach(function (item, i){
-			console.log('this2: ', Object.prototype.toString.apply(this));
 			this.addTag(item);
 		}, this);
 	},
