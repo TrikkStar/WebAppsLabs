@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto;
+var Task, proto, val = 0;
 
 // Helper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -25,10 +25,9 @@ function processString(s) {
  */
 
 function makeNewTask(){
-	var	tsk, val;
+	var	tsk;
 
 	tsk = Object.create(proto);
-	val = 0;
 	tsk.title = "";
 	tsk.completedTime = null;
 	Object.defineProperty(tsk, "tags", {
@@ -37,13 +36,14 @@ function makeNewTask(){
 		enumerable: false,
 		value: []
 	});
+	function gitValue(){
+		val += 1;
+		return val;
+	}
 	Object.defineProperty(tsk, "id", {
 		configurable: false,
 		writeable: false,
-		value: function gitValue(){
-			val += 1;
-			return val;
-		}
+		value: gitValue()
 	});
 
 	Object.preventExtensions(tsk);

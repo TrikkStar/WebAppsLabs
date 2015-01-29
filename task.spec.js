@@ -61,7 +61,6 @@ describe('Your makeTaskFromString function', function(){
 	t1 = "CharliePlaysPokemon";
 	t2 = "abc";
 	full = str + "#" + t1 + "#" + t2;
-	console.log("full: ", full);
 	task = Task.fromString(full);
 
 	it('returns an object', function(){
@@ -73,9 +72,23 @@ describe('Your makeTaskFromString function', function(){
 	it('returns an object with the correct title value', function(){
 		expect(task.title).to.equal(str);
 	});
-	it('returns an object with correct tags',function(){
+	it('returns an object with correct tags', function(){
 		expect(task.tags).to.have.length(2);
 		expect(task.tags).to.include(t1);
 		expect(task.tags).to.include(t2);
 	});
-})
+});
+
+describe('Task methods:', function() {
+	var task1, task2, task3;
+	beforeEach(function() {
+		task1 = Task.new(); 
+	});
+	it('correctly assigns ID values', function(){
+		task2 = Task.new();
+		console.log(task1.id);
+		console.log(task2.id);
+		expect(task1.id).to.equal(1);
+		expect(task2.id).to.equal(2);
+	});
+});
