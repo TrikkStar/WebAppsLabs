@@ -25,6 +25,7 @@ function processString(s) {
  */
 
 function makeNewTask(){
+	"use strict";
 	var	tsk;
 
 	tsk = Object.create(proto);
@@ -51,6 +52,7 @@ function makeNewTask(){
 }
 
 function makeTaskFromObject(obj){
+	"use strict";
 	var tsk = Task.new();
 	tsk.setTitle(obj.title);
 	tsk.addTags(obj.tags);
@@ -58,6 +60,7 @@ function makeTaskFromObject(obj){
 }
 
 function makeTaskFromString(str){
+	"use strict";
 	return Task.fromObject(processString(str));
 }
 
