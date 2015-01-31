@@ -86,9 +86,6 @@ describe('Task methods:', function() {
 	});
 	it('correctly assigns ID values', function(){
 		task2 = Task.new();
-		console.log(task1.id);
-		console.log(task2.id);
-		expect(task1.id).to.equal(1);
-		expect(task2.id).to.equal(2);
+		expect(task2.id).to.equal((task1.id)+1);
 	});
 });
