@@ -142,10 +142,11 @@ proto = {
 	},
 	clone: function clone(){
 		"use strict";
-		var cln = Task.new();
+		var i, cln;
+		cln = Task.new();
 		cln.title = this.title;
 		cln.completedTime = this.completedTime;
-		cln.tags = this.tags;
+		cln.addTags(this.tags);
 		return cln;
 	}
 };

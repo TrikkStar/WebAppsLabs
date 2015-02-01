@@ -105,7 +105,6 @@ describe('Task methods:', function() {
 	});
 	it('check the singular has, add, remove, and toggle', function(){
 		task1.addTag(str);
-		console.log(task1.tags);
 		expect(task1.hasTag(str)).to.equal(true);
 		task1.removeTag(str);
 		expect(task1.hasTag(str)).to.equal(false);
@@ -137,7 +136,6 @@ describe('Task methods:', function() {
 		task2 = task1.clone()
 		expect(task2.hasTag(str)).to.equal(true);
 		expect(task2.title).to.equal(task1.title);
-		expect(task2.id).to.equal(task1.id);
 		expect(task2.completedTime).to.equal(task1.completedTime);
 
 	});
