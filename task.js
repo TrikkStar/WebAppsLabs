@@ -91,7 +91,7 @@ proto = {
 	},
 	hasTag: function hasTag(str){
 		"use strict";
-		for (var i=0; i < this.tags.length(); i +=1){
+		for (var i=0; i < this.tags.length; i +=1){
 			if (this.tags[i] === str){
 				return true;
 			}

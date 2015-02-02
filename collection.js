@@ -47,7 +47,7 @@ function makeFunctionFromArg(arg){
 
 function getIndex(arg){
     arg = makeFunctionFromArg(arg);
-    for (var i=0; i < this.length(); i += 1){
+    for (var i=0; i < this.length; i += 1){
         if (arg(this.values[i])){
             return i;
         }
@@ -72,11 +72,11 @@ function removeOneTask(task){
 proto = {
    length: function length(){
 		"use strict";
-		return this.values.length();
+		return this.values.length;
    },
    isEmpty: function isEmpty(){
 		"use strict";
-		return this.length() !== 0;
+		return this.length !== 0;
    },
    get: function get(arg){
 		"use strict";
