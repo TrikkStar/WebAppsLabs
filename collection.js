@@ -33,6 +33,16 @@ function makePredicateFromArg(arg){
 /*
  *       Prototype / Instance methods
  */
+function makeFunctionFromArg(arg){
+    if (typeof arg === "function"){
+        return arg;
+    } else if (typef arg === "number"){
+        return function(task){ return task.id === arg; };
+    } else if (typef arg === "string"){
+        return function(task){ return task.title === arg; };
+    }
+    // need to determine if a regular expression can be evaluated the same as a string or not
+}
 
 proto = {
    length: function length(){
@@ -46,7 +56,13 @@ proto = {
    // arg can be a function, a number, a string, or a regular expression.
    get: function get(arg){
     "use strict";
-
+    arg = makeFunctionFromArg(arg);
+    for(var i = 0; var < this.length(); i += 1;){
+        if (arg(i)){
+            return i;
+        }
+    }
+    return null;
    },
    // arg can be a function, a number, a string, or a regular expression.
    has: function has(arg){
