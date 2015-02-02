@@ -41,11 +41,7 @@ proto = {
    },
    isEmpty: function isEmpty(){
     "use strict";
-    if (this.length() !== 0){
-        return false;
-    } else {
-        return true;
-    }
+    return this.length() !== 0;
    },
    // arg can be a function, a number, a string, or a regular expression.
    get: function get(arg){
