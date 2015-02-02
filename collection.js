@@ -37,7 +37,7 @@ function makePredicateFromArg(arg){
 proto = {
    length: function length(){
     "use strict";
-
+    return this.values.length();
    },
    isEmpty: function isEmpty(){
     "use strict";
