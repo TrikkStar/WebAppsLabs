@@ -44,6 +44,16 @@ function makeFunctionFromArg(arg){
     // need to determine if a regular expression can be evaluated the same as a string or not
 }
 
+function getIndex(arg){
+    arg = makeFunctionFromArg(arg);
+    for(var i = 0; var < this.length(); i += 1;){
+        if (arg(this.values[i])){
+            return i;
+        }
+    }
+    return -1;
+}
+
 proto = {
    length: function length(){
     "use strict";
@@ -53,27 +63,20 @@ proto = {
     "use strict";
     return this.length() !== 0;
    },
-   // arg can be a function, a number, a string, or a regular expression.
    get: function get(arg){
     "use strict";
-    arg = makeFunctionFromArg(arg);
-    for(var i = 0; var < this.length(); i += 1;){
-        if (arg(i)){
-            return i;
-        }
+    var x = getIndex(arg);
+    if (x === -1){
+        return null;
     }
-    return null;
+    return this.values[x];
    },
-   // arg can be a function, a number, a string, or a regular expression.
    has: function has(arg){
     "use strict";
-    arg = makeFunctionFromArg(arg);
-    for(var i = 0; var < this.length(); i += 1;){
-        if (arg(i)){
-            return true;
-        }
+    if (getIndex(arg) === -1){
+        return false;
     }
-    return false;
+    return true;
    },
    // arg is either a task or an array of tasks.  Make a addOneTask function.
    addOneTask: function addOneTask(task){
