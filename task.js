@@ -91,7 +91,7 @@ proto = {
 	},
 	hasTag: function hasTag(str){
 		"use strict";
-		for (var i=0; i < this.tags.length; i +=1){
+		for (var i=0; i < this.tags.length; i += 1){
 			if (this.tags[i] === str){
 				return true;
 			}
@@ -140,7 +140,7 @@ proto = {
 	},
 	clone: function clone(){
 		"use strict";
-		var i, cln;
+		var cln;
 		cln = Task.new();
 		cln.title = this.title;
 		cln.completedTime = this.completedTime;
