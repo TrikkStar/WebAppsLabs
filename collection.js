@@ -61,6 +61,9 @@ proto = {
    },
    new: function newTask(){
     "use strict";
+    var task = Task.new();
+    this.add(task);
+    return task;
    },
    // arg is either one number or an array of numbers.
    remove: function remove(arg){
