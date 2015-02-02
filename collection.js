@@ -67,6 +67,13 @@ proto = {
    // arg can be a function, a number, a string, or a regular expression.
    has: function has(arg){
     "use strict";
+    arg = makeFunctionFromArg(arg);
+    for(var i = 0; var < this.length(); i += 1;){
+        if (arg(i)){
+            return true;
+        }
+    }
+    return false;
    },
    // arg is either a task or an array of tasks.  Make a addOneTask function.
    addOneTask: function addOneTask(task){
