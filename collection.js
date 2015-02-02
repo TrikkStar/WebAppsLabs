@@ -26,7 +26,7 @@ function makeNewCollection(arr) {
 }
 
 function makePredicateFromArg(arg){
-    "use strict";
+    
 }
 
 
@@ -34,6 +34,7 @@ function makePredicateFromArg(arg){
  *       Prototype / Instance methods
  */
 function makeFunctionFromArg(arg){
+	"use strict";
     if (typeof arg === "function"){
         return arg;
     } else if (typeof arg === "number"){
@@ -46,12 +47,26 @@ function makeFunctionFromArg(arg){
 
 function getIndex(arg){
     arg = makeFunctionFromArg(arg);
-    for(var i=0; var < this.length(); i += 1;){
+    for (var i=0; i < this.length(); i += 1){
         if (arg(this.values[i])){
             return i;
         }
     }
     return -1;
+}
+
+function addOneTask(task){
+	"use strict";
+	if (!this.has(task)){
+		this.values.push(task);
+	}
+}
+
+function removeOneTask(task){
+	"use strict";
+	if (!this.has(task)){
+		this.values.splice(this.values.indexOf(this.get(task)), 1);
+	}
 }
 
 proto = {
@@ -78,28 +93,26 @@ proto = {
 		}
 		return true;
    },
-   addOneTask: function addOneTask(task){
-    	"use strict";
-    	if (!this.has(task)){
-    		this.values.push(task);
-    	}
-   },
    add: function add(arg){
     	"use strict";
     	arg.forEach(function (item, i){
-			this.addOneTask(item);
+			addOneTask(item);
 		}, this);
 		return this;
    },
    new: function newTask(){
 	    "use strict";
 	    var task = Task.new();
-	    this.addOneTask(task);
+	    addOneTask(task);
 	    return task;
    },
    // arg is either one number or an array of numbers.
    remove: function remove(arg){
     	"use strict";
+    	arg.forEach(function (item, i){
+			removeOneTask(item);
+		}, this);
+		return this;
    },
    // arg can be a function, an array of numbers, a string, or a regular expression.
    filter: function filter(arg){
