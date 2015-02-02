@@ -120,6 +120,10 @@ proto = {
    },
    forEach: function forEach(func){
     	"use strict";
+    	this.values.forEach(function (item, i){
+			func(item);
+		}, this);
+		return this;
    }
 };
 
