@@ -17,7 +17,7 @@ function makeNewCollection(arr) {
     var col;
     col = Object.create(proto);
 
-    Object.defineProperty(col, {
+    Object.defineProperty(col, "values", {
         writable: false,
         values: []
     });
@@ -46,7 +46,7 @@ function makeFunctionFromArg(arg){
 
 function getIndex(arg){
     arg = makeFunctionFromArg(arg);
-    for(var i = 0; var < this.length(); i += 1;){
+    for(var i=0; var < this.length(); i += 1;){
         if (arg(this.values[i])){
             return i;
         }
@@ -78,12 +78,18 @@ proto = {
 		}
 		return true;
    },
-   // arg is either a task or an array of tasks.  Make a addOneTask function.
    addOneTask: function addOneTask(task){
     	"use strict";
+    	if (!this.has(task)){
+    		this.values.push(task);
+    	}
    },
    add: function add(arg){
     	"use strict";
+    	arg.forEach(function (item, i){
+			this.addOneTask(item);
+		}, this);
+		return this;
    },
    new: function newTask(){
 	    "use strict";
