@@ -91,14 +91,12 @@ proto = {
 	},
 	hasTag: function hasTag(str){
 		"use strict";
-		var answer;
-		answer = false;
-		this.tags.forEach(function (item, i){
-			if (item === str){
-				answer = true;
+		for (var i=0; i < this.tags.length(); i +=1;){
+			if (this.tags[i] === str){
+				return true;
 			}
-		}, this);
-		return answer;
+		}
+		return false;
 	},
 	addTag: function addTag(str){
 		"use strict";
