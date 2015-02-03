@@ -21,7 +21,7 @@ function makeNewCollection(arr){
         values: []
     });
 	if (Object.prototype.toString.call(arr) === "[object Array]"){
-		this.add(arr);
+		col.add(arr);
 	}
     Object.preventExtensions(col);
     return col;
