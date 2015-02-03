@@ -35,12 +35,19 @@ function randomTasks(num){
 }
 
 describe("Your makeNewCollection function", function(){
-	var coll = TaskCollection.new();
+	var coll, coll2, tasks;
+	coll = TaskCollection.new();
+	tasks = randomTasks(5);
+	coll2 = TaskCollection.new(tasks);
 	it('returns an object', function(){
 		expect(coll).to.be.a('object');
 	});
 	it('returns an object with correct key', function(){
-		expect(task).to.have.ownProperty('values');
+		expect(coll).to.have.ownProperty('values');
+	});
+	it('sucessfully adds tasks when provided them', function(){
+		expect(coll.length()).to.equal(0);
+		expect(coll.length()).to.equal(5);
 	});
 })
 
