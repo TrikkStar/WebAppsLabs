@@ -80,7 +80,7 @@ describe('Your makeTaskFromString function', function(){
 });
 
 describe('Task methods:', function() {
-	var task1, task2,str,str2;
+	var task1,str,str2;
 	beforeEach(function() {
 		str = randomString(5);
 		str2 = randomString(6);
@@ -88,20 +88,19 @@ describe('Task methods:', function() {
 		task1 = Task.new(); 
 	});
 	it('correctly assigns ID values', function(){
-		task2 = Task.new();
+		var task2 = Task.new();
 		expect(task2.id).to.equal((task1.id)+1);
-
 	});
 	it('correctly sets title', function(){
 		task1.setTitle(str);
 		expect(task1.title).to.equal(str)
-
 	});
 	it('checks for completion', function(){
 		expect(task1.isCompleted(task1.completedTime)).to.equal(false);
 		task1.toggleCompleted();
 		expect(task1.isCompleted(task1.completedTime)).to.equal(true);
-
+		task1.toggleCompleted();
+		expect(task1.isCompleted(task1.completedTime)).to.equal(false);
 	});
 	it('check the singular has, add, remove, and toggle', function(){
 		task1.addTag(str);
@@ -110,7 +109,6 @@ describe('Task methods:', function() {
 		expect(task1.hasTag(str)).to.equal(false);
 		task1.toggleTag(str);
 		expect(task1.hasTag(str)).to.equal(true);
-
 	});
 	it('check the plural add, remove, and toggle', function(){
 		var arr, arr2;
@@ -128,15 +126,17 @@ describe('Task methods:', function() {
 		expect(task1.hasTag(str)).to.equal(true);
 		expect(task1.hasTag(str2)).to.equal(false);
 		expect(task1.hasTag(str3)).to.equal(true);
-
 	});
 	it('check if clone works', function(){
-		var task2;
-		task1.addTag(str);
+		var task2, arr;
+		arr = [str, str2, str3];
+		task1.addTags(arr);
 		task2 = task1.clone()
 		expect(task2.hasTag(str)).to.equal(true);
+		expect(task2.hasTag(str2)).to.equal(true);
+		expect(task2.hasTag(str3)).to.equal(true);
 		expect(task2.title).to.equal(task1.title);
 		expect(task2.completedTime).to.equal(task1.completedTime);
-
+		expect(task2.id).to.not.equal(task1.id);
 	});
 });
