@@ -12,7 +12,7 @@ Task = require("./task");
  *       Constructors
  */
 
-function makeNewCollection(arr) {
+function makeNewCollection(arr){
     "use strict";
     var col = Object.create(proto);
 
