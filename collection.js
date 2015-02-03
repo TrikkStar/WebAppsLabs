@@ -25,11 +25,6 @@ function makeNewCollection(arr) {
     return col;
 }
 
-function makePredicateFromArg(arg){
-    
-}
-
-
 /*
  *       Prototype / Instance methods
  */
@@ -106,7 +101,6 @@ proto = {
 	    addOneTask(task);
 	    return task;
    },
-   // arg is either one number or an array of numbers.
    remove: function remove(arg){
     	"use strict";
     	arg.forEach(function (item, i){
@@ -117,6 +111,10 @@ proto = {
    // arg can be a function, an array of numbers, a string, or a regular expression.
    filter: function filter(arg){
     	"use strict";
+    	var tsk = Task.new();
+    	arg.forEach(function (item, i){
+    		tsk.add(this.get(item));
+    	}, this);
    },
    forEach: function forEach(func){
     	"use strict";
