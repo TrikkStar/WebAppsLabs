@@ -141,4 +141,4 @@ Object.defineProperty(TaskCollection, proto, {
    writable: false
 });
 
-module.exports = Task;
+module.exports = TaskCollection;
