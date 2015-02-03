@@ -14,13 +14,15 @@ Task = require("./task");
 
 function makeNewCollection(arr) {
     "use strict";
-    var col;
-    col = Object.create(proto);
+    var col = Object.create(proto);
 
     Object.defineProperty(col, "values", {
         writable: false,
         values: []
     });
+	if (Object.prototype.toString.call(arr) === "[object Array]"){
+		this.add(arr);
+	}
     Object.preventExtensions(col);
     return col;
 }
@@ -41,8 +43,9 @@ function makeFunctionFromArg(arg){
 }
 
 function getIndex(arg){
+	"use strict";
     arg = makeFunctionFromArg(arg);
-    for (var i=0; i < this.length; i += 1){
+    for (var i = 0; i < this.length; i += 1){
         if (arg(this.values[i])){
             return i;
         }
@@ -89,8 +92,8 @@ proto = {
 		return true;
    },
    add: function add(arg){
-    	"use strict";
-    	arg.forEach(function (item, i){
+		"use strict";
+		arg.forEach(function (item, i){
 			addOneTask(item);
 		}, this);
 		return this;
@@ -102,23 +105,23 @@ proto = {
 	    return task;
    },
    remove: function remove(arg){
-    	"use strict";
-    	arg.forEach(function (item, i){
+		"use strict";
+		arg.forEach(function (item, i){
 			removeOneTask(item);
 		}, this);
 		return this;
    },
-   // arg can be a function, an array of numbers, a string, or a regular expression.
    filter: function filter(arg){
-    	"use strict";
-    	var tsk = Task.new();
-    	arg.forEach(function (item, i){
-    		tsk.add(this.get(item));
-    	}, this);
+		"use strict";
+		var tsk = Task.new();
+		arg.forEach(function (item, i){
+			tsk.add(this.get(item));
+		}, this);
+		return tsk;
    },
    forEach: function forEach(func){
-    	"use strict";
-    	this.values.forEach(function (item, i){
+		"use strict";
+		this.values.forEach(function (item, i){
 			func(item);
 		}, this);
 		return this;
