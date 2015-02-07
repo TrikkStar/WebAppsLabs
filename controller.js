@@ -49,9 +49,9 @@ var makeController = function(element) {
     * returns that "li" element (in jQuery wrapper).
     * Use jQuery's "closest".
     */
-   function getLi(ev) {
-
-   }
+	function getLi(ev) {
+		return $(ev.closest("li"));
+	}
 
    /*
     * Given a list item (as jQuery wrapper) returns its index among its
