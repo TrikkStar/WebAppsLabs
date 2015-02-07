@@ -99,16 +99,16 @@ var makeController = function(element) {
     * function.
     */
    function addAddButton() {
-      var button;  // Should be a reference to the newly created button
-      // Use jQuery syntax to create a new html element
-      button = $("<input type=\"button\" value=\"New\" />");
-      // Use appropriate append-type jQuery method to add it right after
-      // "el"
-      $(el).after(button);
-      // Bind clicking of the button to calling the addNewTask function.
-      $(button).on("click", addNewTask);
+		var button;  // Should be a reference to the newly created button
+		// Use jQuery syntax to create a new html element
+		button = $("<input type=\"button\" value=\"New\" />");
+		// Use appropriate append-type jQuery method to add it right after
+		// "el"
+		$(el).after(button);
+		// Bind clicking of the button to calling the addNewTask function.
+		$(button).on("click", addNewTask);
 
-      return this;
+		return this;
    }
 
    /*
@@ -119,7 +119,13 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function addNewTask(ev) {
-      return true;
+		var li;
+		tasks.push("New Task");
+		li = $("<li>" + newTaskHTML("Task") + "</li>");
+		$(el).appendTo(li);
+		console.log(el);
+
+		return true;
    }
 
    /*
