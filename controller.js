@@ -41,7 +41,7 @@ var makeController = function(element) {
     * an "input" button for "remove". See examples in sample.html
     */
    function newTaskHTML(str) {
-
+		return "<li><span>" + str + "</span><input type=\"button\" class=\"remove\" value=\"Remove\"></li>";
    }
 
    /*
@@ -101,7 +101,7 @@ var makeController = function(element) {
    function addAddButton() {
 		var button;  // Should be a reference to the newly created button
 		// Use jQuery syntax to create a new html element
-		button = $("<input type=\"button\" value=\"New\" />");
+		button = $("<input type=\"button\" value=\"New\"/>");
 		// Use appropriate append-type jQuery method to add it right after
 		// "el"
 		$(el).after(button);
@@ -121,9 +121,8 @@ var makeController = function(element) {
    function addNewTask(ev) {
 		var li;
 		tasks.push("New Task");
-		li = $("<li>" + newTaskHTML("Task") + "</li>");
-		$(el).appendTo(li);
-		console.log(el);
+		li = $(newTaskHTML("Task"));
+		$(el).append(li);
 
 		return true;
    }
