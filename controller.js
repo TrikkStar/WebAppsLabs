@@ -8,6 +8,7 @@
  * Used to create a new "controller".
  * "element" needs to be a DOM or jQuery "ul" element.
  */
+ /*eslint-env jquery */
 var makeController = function(element) {
    "use strict";
 
@@ -98,15 +99,14 @@ var makeController = function(element) {
     * function.
     */
    function addAddButton() {
-      var button;   // Should be a reference to the newly created button
-
+      var button;  // Should be a reference to the newly created button
       // Use jQuery syntax to create a new html element
+      button = $("<input type=\"button\" value=\"New\" />");
       // Use appropriate append-type jQuery method to add it right after
       // "el"
-
-
+      $(el).after(button);
       // Bind clicking of the button to calling the addNewTask function.
-
+      $(button).on("click", addNewTask);
 
       return this;
    }
@@ -120,7 +120,7 @@ var makeController = function(element) {
     */
    function addNewTask(ev) {
       return true;
-   };
+   }
 
    /*
     * This method triggers in response to clicking the button with class
@@ -133,7 +133,7 @@ var makeController = function(element) {
     */
    function removeElement(ev) {
       return true;
-   };
+   }
 
 
    /*
@@ -147,7 +147,7 @@ var makeController = function(element) {
     */
    function editElement(ev) {
       return true;
-   };
+   }
 
    /*
     * This method happens when the text input where the user was editing a
@@ -174,7 +174,7 @@ var makeController = function(element) {
     */
    function commitEditing(ev) {
       return true;
-   };
+   }
 
    /*
     * This method is meant to react to the case where the user has pressed
@@ -188,10 +188,11 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B) { return true; }
-
+      if (ev.keyCode !== 0x1B) {
+      	 return true; 
+      	}
       return false;
-   };
+   }
 
    /* You do not need to change anything below this line */
 
