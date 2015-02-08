@@ -61,7 +61,7 @@ var makeController = function(element) {
     * Use jQuery's "prevAll".
     */
    function getIndex(li) {
-
+		return $(li).prevAll().length;
    }
 
    /*
@@ -139,13 +139,10 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
-		var li, i;
-		//li = getLi($("li.remove").click());
-		li = getLi(ev.target);
-		//console.log(li === $("<li><span>Task</span><input type=\"button\" class=\"remove\" value=\"Remove\"></li>"));
-		i = getIndex(li);
+		var i;
+		i = getIndex(getLi(ev.target));
 		tasks.splice(i, 1);
-		li.remove();
+		$("li").get(i).remove();
 
 		return true;
    }
@@ -203,10 +200,10 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B) {
-      	 return true; 
-      	}
-      return false;
+		if (ev.keyCode !== 0x1B) {
+			return true;
+		}
+		return false;
    }
 
    /* You do not need to change anything below this line */
