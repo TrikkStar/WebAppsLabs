@@ -11,13 +11,14 @@
  /*eslint-env jquery */
 var makeController = function(element) {
    "use strict";
+   var el, tasks;
 
    // el is a jQuery object wrapping "element", in case it wasn't a jQuery
    // object already.
-   var el = $(element);
+   el = $(element);
 
    // "tasks" is an array of strings for the tasks to be shown.
-   var tasks = [];
+   tasks = [];
 
    // add an "add" button right after the element
    addAddButton();
@@ -51,7 +52,6 @@ var makeController = function(element) {
     */
 	function getLi(ev) {
 		var tar = $(ev.target);
-		console.log(tar);
 		return $(tar.closest("li"));
 	}
 
@@ -61,7 +61,7 @@ var makeController = function(element) {
     * Use jQuery's "prevAll".
     */
    function getIndex(li) {
-		return $(li).prevAll().length;
+		return li.prevAll().length;
    }
 
    /*
@@ -73,7 +73,11 @@ var makeController = function(element) {
     * - Returns a reference to the jQuery wrapper of that edit element.
     */
    function enableEditMode(li) {
-
+		var input = $("<input type=\"text\" class=\"edit\"/>");
+		$(li).find("span").attr("class=\"hidden\"");
+		$(li).prepend(input);
+		$(li).find("input").attr("class=\"removehidden\"");
+		return li;
    }
 
    /*
@@ -158,7 +162,8 @@ var makeController = function(element) {
     * - Return true to allow propagation.
     */
    function editElement(ev) {
-      return true;
+		enableEditMode(getLi(ev.target)).focus();
+		return true;
    }
 
    /*
