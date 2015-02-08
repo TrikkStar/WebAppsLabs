@@ -50,7 +50,9 @@ var makeController = function(element) {
     * Use jQuery's "closest".
     */
 	function getLi(ev) {
-		return $(ev.closest("li"));
+		var tar = $(ev.target);
+		console.log(tar);
+		return $(tar.closest("li"));
 	}
 
    /*
@@ -137,7 +139,15 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
-      return true;
+		var li, i;
+		//li = getLi($("li.remove").click());
+		li = getLi(ev.target);
+		//console.log(li === $("<li><span>Task</span><input type=\"button\" class=\"remove\" value=\"Remove\"></li>"));
+		i = getIndex(li);
+		tasks.splice(i, 1);
+		li.remove();
+
+		return true;
    }
 
 
