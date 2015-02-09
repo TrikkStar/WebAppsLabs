@@ -73,7 +73,6 @@ var makeController = function(element) {
     * - Returns a reference to the jQuery wrapper of that edit element.
     */
    function enableEditMode(li) {
-   	console.log(li);
 		var input = $("<input type=\"text\" class=\"edit\"/>");
 		$(li).children().addClass("hidden");
 		$(li).prepend(input);
@@ -144,7 +143,7 @@ var makeController = function(element) {
     */
    function removeElement(ev) {
 		var i;
-		i = getIndex(getLi(ev.target));
+		i = getIndex(getLi(ev));
 		tasks.splice(i, 1);
 		$("li").get(i).remove();
 
@@ -162,7 +161,7 @@ var makeController = function(element) {
     * - Return true to allow propagation.
     */
    function editElement(ev) {
-		enableEditMode(getLi(ev.target)).focus();
+		enableEditMode(getLi(ev)).focus();
 		return true;
    }
 
