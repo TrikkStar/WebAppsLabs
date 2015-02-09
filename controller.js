@@ -191,7 +191,16 @@ var makeController = function(element) {
     * - Return true to allow propagation
     */
    function commitEditing(ev) {
-      return true;
+		var li, value, indx;
+		if ($("div").find(".edit").length !== 0){
+			li = getLi(ev);
+			value = $(li).find(".edit").val();
+			indx = getIndex(li);
+			tasks[ indx ] = value;
+			$(li).find("span").text(value);
+			disableEditMode(li);
+		}
+		return true;
    }
 
    /*
