@@ -73,10 +73,10 @@ var makeController = function(element) {
     * - Returns a reference to the jQuery wrapper of that edit element.
     */
    function enableEditMode(li) {
+   	console.log(li);
 		var input = $("<input type=\"text\" class=\"edit\"/>");
-		$(li).find("span").attr("class=\"hidden\"");
+		$(li).children().addClass("hidden");
 		$(li).prepend(input);
-		$(li).find("input").attr("class=\"removehidden\"");
 		return li;
    }
 
