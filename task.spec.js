@@ -92,7 +92,8 @@ describe('Task methods:', function() {
 		expect(task2.id).to.equal((task1.id)+1);
 	});
 	it('correctly sets title', function(){
-		task1.setTitle(str);
+		str4 = " " + str + " ";
+		task1.setTitle(str4);
 		expect(task1.title).to.equal(str)
 	});
 	it('checks for completion', function(){

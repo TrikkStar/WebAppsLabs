@@ -44,6 +44,7 @@ function makeNewTask(){
 	Object.defineProperty(tsk, "id", {
 		configurable: false,
 		writeable: false,
+		enumerable: true,
 		value: gitValue()
 	});
 
@@ -72,7 +73,7 @@ function makeTaskFromString(str){
 proto = {
 	setTitle: function setTitle(str){
 		"use strict";
-		str.trim();
+		str = str.trim();
 		this.title = str;
 		return this;
 	},
@@ -110,6 +111,7 @@ proto = {
 		if (this.hasTag(str)){
 			this.tags.splice(this.tags.indexOf(str), 1);
 		}
+		return this;
 	},
 	toggleTag: function toggleTag(str){
 		"use strict";
@@ -125,18 +127,21 @@ proto = {
 		arr.forEach(function (item, i){
 			this.addTag(item);
 		}, this);
+		return this;
 	},
 	removeTags: function removeTags(arr){
 		"use strict";
 		arr.forEach(function (item, i){
 			this.removeTag(item);
 		}, this);
+		return this;
 	},
 	toggleTags: function toggleTags(arr){
 		"use strict";
 		arr.forEach(function (item, i){
 			this.toggleTag(item);
 		}, this);
+		return this;
 	},
 	clone: function clone(){
 		"use strict";
