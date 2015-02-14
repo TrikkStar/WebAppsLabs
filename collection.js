@@ -18,7 +18,7 @@ function makeNewCollection(arr){
 
     Object.defineProperty(col, "values", {
         writable: false,
-        values: []
+        value: []
     });
 	if (Object.prototype.toString.call(arr) === "[object Array]"){
 		col.add(arr);
