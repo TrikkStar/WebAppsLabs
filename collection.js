@@ -46,29 +46,29 @@ function makeFunctionFromArg(arg){
     // need to determine if a regular expression can be evaluated the same as a string or not
 }
 
-function getIndex(arg){
+function getIndex(arg, self){
 	"use strict";
 	var i;
     arg = makeFunctionFromArg(arg);
-    for (i = 0; i < this.length; i += 1){
-        if (arg(this.values[ i ])){
+    for (i = 0; i < self.length; i += 1){
+        if (arg(self.values[ i ])){
             return i;
         }
     }
     return -1;
 }
 
-function addOneTask(task){
+function addOneTask(task, self){
 	"use strict";
-	if (!this.has(task)){
-		this.values.push(task);
+	if (!self.has(task)){
+		self.values.push(task);
 	}
 }
 
-function removeOneTask(task){
+function removeOneTask(task, self){
 	"use strict";
-	if (!this.has(task)){
-		this.values.splice(this.values.indexOf(this.get(task)), 1);
+	if (!self.has(task)){
+		self.values.splice(self.values.indexOf(self.get(task)), 1);
 	}
 }
 
@@ -83,7 +83,7 @@ proto = {
    },
    get: function get(arg){
 		"use strict";
-		var x = getIndex(arg);
+		var x = getIndex(arg, this);
 		if (x === -1){
 		    return null;
 		}
@@ -91,7 +91,7 @@ proto = {
    },
    has: function has(arg){
 		"use strict";
-		if (getIndex(arg) === -1){
+		if (getIndex(arg, this) === -1){
 			return false;
 		}
 		return true;
@@ -99,20 +99,20 @@ proto = {
    add: function add(arg){
 		"use strict";
 		arg.forEach(function (item, i){
-			addOneTask(item);
+			addOneTask(item, this);
 		}, this);
 		return this;
    },
    new: function newTask(){
 	    "use strict";
 	    var task = Task.new();
-	    addOneTask(task);
+	    addOneTask(task, this);
 	    return task;
    },
    remove: function remove(arg){
 		"use strict";
 		arg.forEach(function (item, i){
-			removeOneTask(item);
+			removeOneTask(item, this);
 		}, this);
 		return this;
    },
