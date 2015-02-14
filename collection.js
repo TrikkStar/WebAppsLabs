@@ -32,21 +32,26 @@ function makeNewCollection(arr){
  */
 function makeFunctionFromArg(arg){
 	"use strict";
-    if (typeof arg === "function"){
-        return arg;
-    } else if (typeof arg === "number"){
-        return function(task){ return task.id === arg; };
-    } else if (typeof arg === "string"){
-        return function(task){ return task.title === arg; };
-    }
+	if (typeof arg === "function"){
+		return arg;
+	} else if (typeof arg === "number"){
+		return function(task){
+			return task.id === arg;
+		};
+	} else if (typeof arg === "string"){
+		return function(task){
+			return task.title === arg;
+		};
+	}
     // need to determine if a regular expression can be evaluated the same as a string or not
 }
 
 function getIndex(arg){
 	"use strict";
+	var i;
     arg = makeFunctionFromArg(arg);
-    for (var i = 0; i < this.length; i += 1){
-        if (arg(this.values[i])){
+    for (i = 0; i < this.length; i += 1){
+        if (arg(this.values[ i ])){
             return i;
         }
     }
@@ -82,7 +87,7 @@ proto = {
 		if (x === -1){
 		    return null;
 		}
-		return this.values[x];
+		return this.values[ x ];
    },
    has: function has(arg){
 		"use strict";
@@ -125,6 +130,15 @@ proto = {
 			func(item);
 		}, this);
 		return this;
+   },
+   groupByTag: function groupByTag(){
+		"use strict";
+   },
+   print: function print(){
+		"use strict";
+   },
+   concat: function concat(coll){
+		"use strict";
    }
 };
 
