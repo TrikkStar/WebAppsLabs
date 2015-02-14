@@ -33,12 +33,15 @@ function makeNewCollection(arr){
 function makeFunctionFromArg(arg){
 	"use strict";
 	if (typeof arg === "function"){
+		//console.log("f");
 		return arg;
 	} else if (typeof arg === "number"){
+		//console.log("n");
 		return function(task){
 			return task.id === arg;
 		};
 	} else if (typeof arg === "string"){
+		//console.log("s");
 		return function(task){
 			return task.title === arg;
 		};
@@ -50,6 +53,9 @@ function getIndex(arg, self){
 	"use strict";
 	var i;
     arg = makeFunctionFromArg(arg);
+    console.log("arg", arg);
+    console.log(self.length);
+    //console.log(arg(13));
     for (i = 0; i < self.length; i += 1){
         if (arg(self.values[ i ])){
             return i;

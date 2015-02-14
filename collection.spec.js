@@ -34,21 +34,43 @@ function randomTasks(num){
 	return arr;
 }
 
-describe("Your makeNewCollection function", function(){
+describe('Your makeNewCollection function', function(){
 	var coll, coll2, tasks;
 	coll = TaskCollection.new();
 	tasks = randomTasks(5);
 	coll2 = TaskCollection.new(tasks);
 	it('returns an object', function(){
-		expect(coll).to.be.a('object');
+		expect(coll).to.be.a("object");
 	});
 	it('returns an object with correct key', function(){
-		expect(coll).to.have.ownProperty('values');
+		expect(coll).to.have.ownProperty("values");
 	});
 	it('sucessfully adds tasks when provided them', function(){
-		expect(coll.length()).to.equal(0);
+		expect(coll.isEmpty()).to.equal(true);
 		expect(coll2.length()).to.equal(5);
 	});
 })
 
-// ADD YOUR TESTS HERE
+describe('Your Collection.get() function', function(){
+	var coll, tasks;
+	tasks = randomTasks(10);
+	coll = TaskCollection.new(tasks);
+	it.skip('properly gets tasks when given a function', function(){
+		
+	});
+	it('properly gets tasks when given a number', function(){
+		var id = tasks[7].id;
+		expect(coll.get(id)).to.equal(tasks[7]);
+		expect(coll.get(id*42)).to.equal(null);
+	});
+	it.skip('properly gets tasks when given a string', function(){
+		var str, title;
+		title = tasks[7].title;
+		str = "9*1This Will Not Be Generated@#45";
+		expect(coll.get(title)).to.equal(tasks[7]);
+		expect(coll.get(str)).to.equal(null);
+	});
+	it.skip('properly gets tasks when given a regular expression', function(){
+		
+	});
+})
