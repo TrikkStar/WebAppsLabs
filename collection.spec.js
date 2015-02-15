@@ -56,7 +56,7 @@ describe('Your Collection.get() function', function(){
 	var coll, tasks;
 	tasks = randomTasks(10);
 	coll = TaskCollection.new(tasks);
-	it.skip('properly gets tasks when given a function', function(){
+	it('properly gets tasks when given a function', function(){
 		
 	});
 	it('properly gets tasks when given a number', function(){
@@ -81,7 +81,7 @@ describe('Your Collection.has() function', function(){
     tasks = randomTasks(5);
     coll = TaskCollection.new(tasks);
     it.skip('works properly when given a function', function(){
-
+        })
     });
     it('works properly when given a number'. function(){
         var id = tasks[3].id;
