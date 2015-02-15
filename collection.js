@@ -33,15 +33,12 @@ function makeNewCollection(arr){
 function makeFunctionFromArg(arg){
 	"use strict";
 	if (typeof arg === "function"){
-		//console.log("f");
 		return arg;
 	} else if (typeof arg === "number"){
-		//console.log("n");
 		return function(task){
 			return task.id === arg;
 		};
 	} else if (typeof arg === "string"){
-		//console.log("s");
 		return function(task){
 			return task.title === arg;
 		};
@@ -53,9 +50,6 @@ function getIndex(arg, self){
 	"use strict";
 	var i;
     arg = makeFunctionFromArg(arg);
-    //console.log(self);
-    //console.log(self.length());
-    //console.log(arg(13));
     for (i = 0; i < self.length(); i += 1){
         if (arg(self.values[ i ])){
             return i;
@@ -76,6 +70,21 @@ function removeOneTask(task, self){
 	if (!self.has(task)){
 		self.values.splice(self.values.indexOf(self.get(task)), 1);
 	}
+}
+
+function printTask(tsk){
+	"use strict";
+	var str = tsk.title;
+	if (tsk.isCompleted()){
+		str = str + " " + tsk.completedTime;
+	}
+	if (tsk.hasTags()){
+		tsk.tags.forEach(function (item, i){
+			str = str + " #" + item;
+		});
+	}
+	str = str + "\n";
+	return str;
 }
 
 proto = {
@@ -139,12 +148,40 @@ proto = {
    },
    groupByTag: function groupByTag(){
 		"use strict";
+		var obj, func, container;
+		obj = {};
+		container = Task.new();
+		func = function(tsk){
+			container.addTags(tsk.tags);
+		};
+		this.forEach(func);
+		container.tags.forEach(function (tag, i){
+			var arr = [];
+			this.values.forEach(function (task, i2){
+				if (task.hasTag(tag)){
+					arr.push(task);
+				}
+			});
+			obj[ tag ] = TaskCollection.new(arr);
+		}, this);
+		return obj;
    },
    print: function print(){
 		"use strict";
+		var str = "";
+		if (!this.isEmpty()){
+			this.values.forEach(function (item, i){
+				str = str + printTask(item);
+			});
+		}
+		return str;
    },
    concat: function concat(coll){
 		"use strict";
+		coll.forEach(function (item, i){
+			this.add(item.values);
+		}, this);
+		return this;
    }
 };
 
