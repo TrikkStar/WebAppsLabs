@@ -50,7 +50,7 @@ describe('Your makeNewCollection function', function(){
         expect(coll.isEmpty()).to.equal(false);
 		expect(coll2.length()).to.equal(5);
 	});
-})
+});
 
 describe('Your Collection.get() function', function(){
 	var coll, tasks;
@@ -74,14 +74,14 @@ describe('Your Collection.get() function', function(){
 	it.skip('properly gets tasks when given a regular expression', function(){
 		
 	});
-})
+});
 
 describe('Your Collection.has() function', function(){
     var coll, tasks;
     tasks = randomTasks(5);
     coll = TaskCollection.new(tasks);
     it.skip('works properly when given a function', function(){
-        })
+    	
     });
     it('works properly when given a number', function(){
         var id = tasks[3].id;
@@ -98,7 +98,7 @@ describe('Your Collection.has() function', function(){
     it.skip('works properly for regular expressions',function(){
 
     });
-})
+});
 
 describe('Your other Collection functions', function(){
     it('correctly implements add, remove, and newTask',function(){
@@ -120,7 +120,7 @@ describe('Your other Collection functions', function(){
         coll2.new();
         expect(coll2.length()).to.equal(1);
     });
-})
+});
 
 describe('Tests for filter function and forEach',function(){
     var coll, tasks;
@@ -133,10 +133,10 @@ describe('Tests for filter function and forEach',function(){
         expect(coll2.isEmpty()).to.equal(false);
         expect(coll2.length()).to.equal(1);
         expect(coll2.get(id1)).to.equal(tasks[1]);
-    })
+    });
     it.skip('filters if given a function',function(){
 
-    })
+    });
     it('filters if given a string',function(){
         var coll2, title1;
         title1 = tasks[3].title;
@@ -144,10 +144,10 @@ describe('Tests for filter function and forEach',function(){
         expect(coll2.isEmpty()).to.equal(false);
         expect(coll2.length()).to.equal(1);
         expect(coll2.get(title1)).to.equal(tasks[3]);
-    })
+    });
     it.skip('filters if given a regular expression',function(){
 
-    })
+    });
 });
 
 describe('tests that the forEach function is going through the taskcollection correctly', function(){
@@ -163,7 +163,7 @@ describe('tests that the forEach function is going through the taskcollection co
         });
         expect(c).to.equal(coll.length());
 
-    })
+    });
 });
 
 /*functions needed to test:
