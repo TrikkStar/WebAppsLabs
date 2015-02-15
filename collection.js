@@ -33,15 +33,12 @@ function makeNewCollection(arr){
 function makeFunctionFromArg(arg){
 	"use strict";
 	if (typeof arg === "function"){
-		//console.log("f");
 		return arg;
 	} else if (typeof arg === "number"){
-		//console.log("n");
 		return function(task){
 			return task.id === arg;
 		};
 	} else if (typeof arg === "string"){
-		//console.log("s");
 		return function(task){
 			return task.title === arg;
 		};
@@ -53,9 +50,6 @@ function getIndex(arg, self){
 	"use strict";
 	var i;
     arg = makeFunctionFromArg(arg);
-    //console.log(self);
-    //console.log(self.length());
-    //console.log(arg(13));
     for (i = 0; i < self.length(); i += 1){
         if (arg(self.values[ i ])){
             return i;
@@ -139,6 +133,23 @@ proto = {
    },
    groupByTag: function groupByTag(){
 		"use strict";
+		var obj, func, container;
+		obj = {};
+		container = Task.new();
+		func = function(tsk){
+			container.addTags(tsk.tags);
+		};
+		this.forEach(func);
+		container.tags.forEach(function (tag, i){
+			var arr = [];
+			this.values.forEach(function (task, i2){
+				if (task.hasTag(tag)){
+					arr.push(task);
+				}
+			});
+			obj[ tag ] = TaskCollection.new(arr);
+		}, this);
+		return obj;
    },
    print: function print(){
 		"use strict";
