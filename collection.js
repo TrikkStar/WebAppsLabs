@@ -53,10 +53,10 @@ function getIndex(arg, self){
 	"use strict";
 	var i;
     arg = makeFunctionFromArg(arg);
-    console.log("arg", arg);
-    console.log(self.length);
+    console.log(self);
+    console.log(self.length());
     //console.log(arg(13));
-    for (i = 0; i < self.length; i += 1){
+    for (i = 0; i < self.length(); i += 1){
         if (arg(self.values[ i ])){
             return i;
         }
