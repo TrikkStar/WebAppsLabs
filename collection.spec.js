@@ -117,7 +117,7 @@ describe('Your other Collection functions', function(){
         coll2.remove(tasks1);
         expect(coll.isEmpty()).to.equal(true);
 
-        expect(new()).to.not.throw(Error); //What is this doing?
+        expect(new()).to.not.throw(Error); //What is this doing? //Not entirely sure.  Skiadas told me to put it in. SRB
         coll2.new();
         expect(coll2.length()).to.equal(1);
     });
