@@ -72,6 +72,21 @@ function removeOneTask(task, self){
 	}
 }
 
+function printTask(tsk){
+	"use strict";
+	var str = tsk.title;
+	if (tsk.isCompleted()){
+		str = str + " " + tsk.completedTime;
+	}
+	if (tsk.hasTags()){
+		tsk.tags.forEach(function (item, i){
+			str = str + " #" + item;
+		});
+	}
+	str = str + "\n";
+	return str;
+}
+
 proto = {
    length: function length(){
 		"use strict";
@@ -153,6 +168,13 @@ proto = {
    },
    print: function print(){
 		"use strict";
+		var str = "";
+		if (!this.isEmpty()){
+			this.values.forEach(function (item, i){
+				str = str + printTask(item);
+			});
+		}
+		return str;
    },
    concat: function concat(coll){
 		"use strict";
