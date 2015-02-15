@@ -74,3 +74,13 @@ describe('Your Collection.get() function', function(){
 		
 	});
 })
+
+/*functions needed to test:
+has() (can recycle test from get changing what is looked for to t/f)
+new()
+remove()
+filter()
+foreach()
+groupByTag()
+print()
+concat()*/
