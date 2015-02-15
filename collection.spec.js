@@ -83,7 +83,7 @@ describe('Your Collection.has() function', function(){
     it.skip('works properly when given a function', function(){
         })
     });
-    it('works properly when given a number'. function(){
+    it('works properly when given a number', function(){
         var id = tasks[3].id;
         expect(coll.has(id)).to.equal(true);
         expect(coll.has(id*3)).to.equal(false);
@@ -102,7 +102,7 @@ describe('Your Collection.has() function', function(){
 
 describe('Your other Collection functions', function(){
     it('correctly implements add, remove, and newTask',function(){
-        var coll1. coll2, tasks1, tasks2, id1;
+        var coll1, coll2, tasks1, tasks2, id1;
         tasks1 = randomTasks(1);
         tasks2 = randomTasks(7);
         id1 = tasks2[5].id;
@@ -117,7 +117,6 @@ describe('Your other Collection functions', function(){
         coll2.remove(tasks1);
         expect(coll.isEmpty()).to.equal(true);
 
-        expect(new()).to.not.throw(Error); //What is this doing? //Not entirely sure.  Skiadas told me to put it in. SRB
         coll2.new();
         expect(coll2.length()).to.equal(1);
     });
