@@ -63,7 +63,7 @@ describe('Your Collection.get() function', function(){
 		expect(coll.get(id)).to.equal(tasks[7]);
 		expect(coll.get(id*42)).to.equal(null);
 	});
-	it.skip('properly gets tasks when given a string', function(){
+	it('properly gets tasks when given a string', function(){
 		var str, title;
 		title = tasks[7].title;
 		str = "9*1This Will Not Be Generated@#45";
