@@ -47,6 +47,7 @@ describe('Your makeNewCollection function', function(){
 	});
 	it('sucessfully adds tasks when provided them', function(){
 		expect(coll.isEmpty()).to.equal(true);
+        expect(coll.isEmpty()).to.equal(false);
 		expect(coll2.length()).to.equal(5);
 	});
 })
@@ -75,12 +76,109 @@ describe('Your Collection.get() function', function(){
 	});
 })
 
+describe('Your Collection.has() function', function(){
+    var coll, tasks;
+    tasks = randomTasks(5);
+    coll = TaskCollection.new(tasks);
+    it.skip('works properly when given a function', function(){
+
+    });
+    it('works properly when given a number'. function(){
+        var id = tasks[3].id;
+        expect(coll.has(id)).to.equal(true);
+        expect(coll.has(id*3)).to.equal(false);
+    });
+    it('works properly when given a string', function(){
+        var str, title;
+        title = tasks[2].title;
+        str = "9*1This Will Not Be Generated@#45";
+        expect(coll.has(title)).to.equal(true);
+        expect(coll.has(str)).to.equal(false);
+    });
+    it.skip('works properly for regular expressions',function(){
+
+    });
+})
+
+describe('Your other Collection functions', function(){
+    it('correctly implements add, remove, and newTask',function(){
+        var coll1. coll2, tasks1, tasks2, id1;
+        coll1 = TaskCollection.new();
+        coll2 = TaskCollection.new();
+        tasks1 = randomTasks(1);
+        tasks2 = randomTasks(7);
+        id1 = tasks2[5].id;
+        coll.add(tasks2);
+        expect(coll.isEmpty()).to.equal(false);
+        expect(coll.length()).to.equal(7);
+        expect(coll.has(id1)).to.equal(true);
+        coll.remove(id1);
+        expect(coll.isEmpty()).to.equal(false);
+        expect(coll.length()).to.equal(6);
+        expect(coll.has(id1)).to.equal(false);
+
+        coll2.add(tasks1);
+        expect(coll.isEmpty()).to.equal(false);
+        expect(coll.length()).to.equal(1);
+        coll2.remove(tasks1);
+        expect(coll.isEmpty()).to.equal(true);
+        expect(coll.length()).to.equal(0);
+
+        expect(new()).to.not.throw(Error);
+        coll2.new();
+        expect(coll2.length()).to.equal(1);
+        expect(coll2.isEmpty()).to.equal(false);
+
+    });
+})
+
+describe('Tests for filter function and forEach',function(){
+    var coll, tasks;
+    coll = TaskCollection.new();
+    tasks = randomTasks(6);
+    it('filters if given an array of numbers',function(){
+        var coll2, id1;
+        id1 = tasks[1].id;
+        coll2 = coll.filter(id1);
+        expect(coll2.isEmpty()).to.equal(false);
+        expect(coll2.length()).to.equal(1);
+        expect(coll2.get(id1)).to.equal(tasks[1]);
+    })
+    it.skip('filters if given a function',function(){
+
+    })
+    it('filters if given a string',function(){
+        var coll2, title1;
+        title1 = tasks[3].title;
+        coll2 = coll.filter(title1);
+        expect(coll2.isEmpty()).to.equal(false);
+        expect(coll2.length()).to.equal(1);
+        expect(coll2.get(title1)).to.equal(tasks[3]);
+    })
+    it.skip('filters if given a regular expression',function(){
+
+    })
+});
+
+describe('tests that the forEach function is going through the taskcollection correctly', function(){
+    it('forEach works correctly',function(){
+        var c, coll, tasks;
+        coll = TaskCollection.new();
+        tasks = randomTasks(8);
+        c = 0;
+        coll.add(tasks);
+        coll.forEach(function(task){
+            c+=1;
+            expect(task).to.not.equal(undefined);
+        });
+        expect(c).to.equal(coll.length());
+
+    })
+});
+
 /*functions needed to test:
-has() (can recycle test from get changing what is looked for to t/f)
-new()
-remove()
-filter()
-foreach()
+has() (can recycle test from get changing what is looked for to t/f) (need to finish when we figure out how to handle functions and regular expressions)
+filter() (need to finish up when we know how to handle functions and regular expressions)
 groupByTag()
 print()
 concat()*/
