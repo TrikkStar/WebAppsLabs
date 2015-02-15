@@ -103,32 +103,23 @@ describe('Your Collection.has() function', function(){
 describe('Your other Collection functions', function(){
     it('correctly implements add, remove, and newTask',function(){
         var coll1. coll2, tasks1, tasks2, id1;
-        coll1 = TaskCollection.new();
-        coll2 = TaskCollection.new();
         tasks1 = randomTasks(1);
         tasks2 = randomTasks(7);
         id1 = tasks2[5].id;
-        coll.add(tasks2);
-        expect(coll.isEmpty()).to.equal(false);
-        expect(coll.length()).to.equal(7);
+        coll1 = TaskCollection.new(tasks2);
         expect(coll.has(id1)).to.equal(true);
         coll.remove(id1);
-        expect(coll.isEmpty()).to.equal(false);
         expect(coll.length()).to.equal(6);
         expect(coll.has(id1)).to.equal(false);
 
-        coll2.add(tasks1);
+        coll2 = TaskCollection.new(tasks1);
         expect(coll.isEmpty()).to.equal(false);
-        expect(coll.length()).to.equal(1);
         coll2.remove(tasks1);
         expect(coll.isEmpty()).to.equal(true);
-        expect(coll.length()).to.equal(0);
 
-        expect(new()).to.not.throw(Error);
+        expect(new()).to.not.throw(Error); //What is this doing?
         coll2.new();
         expect(coll2.length()).to.equal(1);
-        expect(coll2.isEmpty()).to.equal(false);
-
     });
 })
 
