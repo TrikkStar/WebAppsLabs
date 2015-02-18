@@ -139,19 +139,22 @@ describe('Tests for filter function and forEach',function(){
     tasks = randomTasks(6);
     coll = TaskCollection.new(tasks);
     it('filters if given an array of numbers',function(){
-        var coll2, id1;
-        id1 = tasks[1].id;
-        coll2 = coll.filter(id1);
-        expect(coll2.get(id1)).to.equal(tasks[1]);
+        var coll2, ids, i;
+        ids = [];
+        for ( i=1; i < 5; i += 1){
+        	ids.push(tasks[i].id);
+        }
+        coll2 = coll.filter(ids);
+        expect(coll2.get(ids[3])).to.equal(tasks[4]);
     });
     it.skip('filters if given a function',function(){
 
     });
     it('filters if given a string',function(){
-        var coll2, title1;
-        title1 = tasks[3].title;
-        coll2 = coll.filter(title1);
-        expect(coll2.get(title1)).to.equal(tasks[3]);
+        var coll2, title;
+        title = tasks[3].title;
+        coll2 = coll.filter(title);
+        expect(coll2.get(title)).to.equal(tasks[3]);
     });
     it.skip('filters if given a regular expression',function(){
 
@@ -161,7 +164,7 @@ describe('Tests for filter function and forEach',function(){
 describe('Your forEach method', function(){
     it('correctly itterates through TaskCollection',function(){
         var c, coll, tasks, rnd;
-        rnd = Math.floor((Math.random() * 10) + 1); //random int 1-10
+        rnd = Math.floor((Math.random() * 10) * 10); //random int 1-100
         tasks = randomTasks(rnd);
         coll = TaskCollection.new(tasks);
         c = 0;

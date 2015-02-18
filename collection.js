@@ -141,11 +141,15 @@ proto = {
    },
    filter: function filter(arg){
 		"use strict";
-		var tsk = Task.new();
-		arg.forEach(function (item, i){
-			tsk.add(this.get(item));
-		}, this);
-		return tsk;
+		var tskC = TaskCollection.new();
+		if (Object.prototype.toString.call(arg) === "[object Array]"){
+			arg.forEach(function (item, i){
+				tskC.add(this.get(item));
+			}, this);
+		} else {
+			tskC.add(this.get(arg));
+		}
+		return tskC;
    },
    forEach: function forEach(func){
 		"use strict";
