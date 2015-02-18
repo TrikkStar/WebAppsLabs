@@ -47,7 +47,6 @@ describe('Your makeNewCollection function', function(){
 	});
 	it('sucessfully adds tasks when provided them', function(){
 		expect(coll.isEmpty()).to.equal(true);
-        expect(coll.isEmpty()).to.equal(false);
 		expect(coll2.length()).to.equal(5);
 	});
 });
@@ -100,39 +99,39 @@ describe('Your Collection.has() function', function(){
     });
 });
 
-describe('Your other Collection functions', function(){
-    it('correctly implements add, remove, and newTask',function(){
-        var coll1, coll2, tasks1, tasks2, id1;
-        tasks1 = randomTasks(1);
-        tasks2 = randomTasks(7);
-        id1 = tasks2[5].id;
-        coll1 = TaskCollection.new(tasks2);
-        expect(coll.has(id1)).to.equal(true);
-        coll.remove(id1);
-        expect(coll.length()).to.equal(6);
-        expect(coll.has(id1)).to.equal(false);
-
-        coll2 = TaskCollection.new(tasks1);
-        expect(coll.isEmpty()).to.equal(false);
-        coll2.remove(tasks1);
-        expect(coll.isEmpty()).to.equal(true);
-
-        //expect(new()).to.not.throw(Error); //What is this doing?
+describe('Your other TaskCollection functions', function(){
+	var coll1, coll2, task, tasks, id;
+	task = randomTasks(1);
+	tasks = randomTasks(7);
+    it('correctly removes a single item', function(){
+        id = tasks[5].id;
+        coll1 = TaskCollection.new(tasks);
+        expect(coll1.has(id)).to.equal(true);
+        coll1.remove(id);
+        expect(coll1.length()).to.equal(6);
+        expect(coll1.has(id)).to.equal(false);
+    });
+    it.skip('correctly removes multiple items', function(){
+    	//this testing case was overlooked in inital implimentation
+    });
+	it('correctly impliments newTask', function(){
+		coll2 = TaskCollection.new(task);
+        expect(coll2.isEmpty()).to.equal(false);
+        coll2.remove(task);
+        expect(coll2.isEmpty()).to.equal(true);
         coll2.new();
         expect(coll2.length()).to.equal(1);
-    });
+	});
 });
 
 describe('Tests for filter function and forEach',function(){
     var coll, tasks;
-    coll = TaskCollection.new();
     tasks = randomTasks(6);
+    coll = TaskCollection.new(tasks);
     it('filters if given an array of numbers',function(){
         var coll2, id1;
         id1 = tasks[1].id;
         coll2 = coll.filter(id1);
-        expect(coll2.isEmpty()).to.equal(false);
-        expect(coll2.length()).to.equal(1);
         expect(coll2.get(id1)).to.equal(tasks[1]);
     });
     it.skip('filters if given a function',function(){
@@ -142,8 +141,6 @@ describe('Tests for filter function and forEach',function(){
         var coll2, title1;
         title1 = tasks[3].title;
         coll2 = coll.filter(title1);
-        expect(coll2.isEmpty()).to.equal(false);
-        expect(coll2.length()).to.equal(1);
         expect(coll2.get(title1)).to.equal(tasks[3]);
     });
     it.skip('filters if given a regular expression',function(){
@@ -151,19 +148,17 @@ describe('Tests for filter function and forEach',function(){
     });
 });
 
-describe('tests that the forEach function is going through the taskcollection correctly', function(){
-    it('forEach works correctly',function(){
+describe('Your forEach method', function(){
+    it('correctly itterates through TaskCollection',function(){
         var c, coll, tasks;
-        coll = TaskCollection.new();
         tasks = randomTasks(8);
+        coll = TaskCollection.new(tasks);
         c = 0;
-        coll.add(tasks);
         coll.forEach(function(task){
             c+=1;
             expect(task).to.not.equal(undefined);
         });
         expect(c).to.equal(coll.length());
-
     });
 });
 
