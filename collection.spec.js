@@ -152,7 +152,7 @@ describe('Your TaskCollection.newTask() function', function(){
 	});
 });
 
-describe('Tests for filter function and forEach',function(){
+describe('Your TaskCollection.filter() function',function(){
     var coll, tasks;
     tasks = randomTasks(6);
     coll = TaskCollection.new(tasks);
@@ -165,8 +165,18 @@ describe('Tests for filter function and forEach',function(){
         coll2 = coll.filter(ids);
         expect(coll2.get(ids[3])).to.equal(tasks[4]);
     });
-    it.skip('filters if given a function',function(){
-
+    it('filters if given a function',function(){
+		var fnc, tag, coll2;
+		tag = tasks[3].tags[0];
+		fnc = function(tsk){
+			for(var i = 0; i < tsk.tags.length; i += 1){
+				if (tsk.tags[i] === tag){
+					return true;
+				}
+			}
+		};
+		coll2 = coll.filter(fnc);
+		expect(coll2.get(fnc)).to.equal(tasks[3]);
     });
     it('filters if given a string',function(){
         var coll2, title;
@@ -179,7 +189,7 @@ describe('Tests for filter function and forEach',function(){
     });
 });
 
-describe('Your forEach method', function(){
+describe('Your TaskCollection.forEach() function', function(){
     it('correctly itterates through TaskCollection',function(){
         var c, coll, tasks, rnd;
         rnd = Math.floor((Math.random() * 10) * 10); //random int 1-100
