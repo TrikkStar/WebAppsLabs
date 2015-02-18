@@ -51,7 +51,7 @@ describe('Your makeNewCollection function', function(){
 	});
 });
 
-describe('Your Collection.get() function', function(){
+describe('Your TaskCollection.get() function', function(){
 	var coll, tasks;
 	tasks = randomTasks(10);
 	coll = TaskCollection.new(tasks);
@@ -75,7 +75,7 @@ describe('Your Collection.get() function', function(){
 	});
 });
 
-describe('Your Collection.has() function', function(){
+describe('Your TaskCollection.has() function', function(){
     var coll, tasks;
     tasks = randomTasks(5);
     coll = TaskCollection.new(tasks);
@@ -99,33 +99,38 @@ describe('Your Collection.has() function', function(){
     });
 });
 
-describe('Your other TaskCollection functions', function(){
-	var coll1, coll2, task, tasks, id;
-	task = randomTasks(1);
+describe('Your TaskCollection.remove() functions', function(){
+	var coll, tasks, id;
 	tasks = randomTasks(7);
+	coll = TaskCollection.new(tasks);
     it('correctly removes a single item', function(){
         id = tasks[5].id;
-        coll1 = TaskCollection.new(tasks);
-        expect(coll1.has(id)).to.equal(true);
-        coll1.remove(id);
-        expect(coll1.length()).to.equal(6);
-        expect(coll1.has(id)).to.equal(false);
+        expect(coll.has(id)).to.equal(true);
+        coll.remove(id);
+        expect(coll.length()).to.equal(6);
+        expect(coll.has(id)).to.equal(false);
     });
     it('correctly removes multiple items', function(){
     	id = [];
-    	coll1.values.forEach(function (item, i){
+    	coll.values.forEach(function (item, i){
     		id.push(item.id);
     	});
-    	coll1.remove(id);
-    	expect(coll1.isEmpty()).to.equal(true);
+    	coll.remove(id);
+    	expect(coll.isEmpty()).to.equal(true);
     });
+});
+
+describe('Your TaskCollection.newTask() function', function(){
+	var coll, task;
+	task = randomTasks(1);
+	coll = TaskCollection.new(task);
 	it('correctly impliments newTask', function(){
-		coll2 = TaskCollection.new(task);
-        expect(coll2.isEmpty()).to.equal(false);
-        coll2.remove(task);
-        expect(coll2.isEmpty()).to.equal(true);
-        coll2.new();
-        expect(coll2.length()).to.equal(1);
+		expect(coll.length()).to.equal(1);
+        expect(coll.isEmpty()).to.equal(false);
+        coll.remove(task[0].id);
+        expect(coll.isEmpty()).to.equal(true);
+        coll.new();
+        expect(coll.length()).to.equal(1);
 	});
 });
 

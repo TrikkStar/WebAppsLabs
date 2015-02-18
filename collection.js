@@ -94,7 +94,7 @@ proto = {
    },
    isEmpty: function isEmpty(){
 		"use strict";
-		return this.length !== 0;
+		return this.length() === 0;
    },
    get: function get(arg){
 		"use strict";
