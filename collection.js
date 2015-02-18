@@ -113,9 +113,13 @@ proto = {
    },
    add: function add(arg){
 		"use strict";
-		arg.forEach(function (item, i){
-			addOneTask(item, this);
-		}, this);
+		if (Object.prototype.toString.call(arg) === "[object Array]"){
+			arg.forEach(function (item, i){
+				addOneTask(item, this);
+			}, this);
+		} else {
+			addOneTask(arg, this);
+		}
 		return this;
    },
    new: function newTask(){
