@@ -150,8 +150,9 @@ describe('Tests for filter function and forEach',function(){
 
 describe('Your forEach method', function(){
     it('correctly itterates through TaskCollection',function(){
-        var c, coll, tasks;
-        tasks = randomTasks(8);
+        var c, coll, tasks, rnd;
+        rnd = Math.floor((Math.random() * 10) + 1); //random int 1-10
+        tasks = randomTasks(rnd);
         coll = TaskCollection.new(tasks);
         c = 0;
         coll.forEach(function(task){

@@ -67,7 +67,7 @@ function addOneTask(task, self){
 
 function removeOneTask(task, self){
 	"use strict";
-	if (!self.has(task)){
+	if (self.has(task)){
 		self.values.splice(self.values.indexOf(self.get(task)), 1);
 	}
 }
@@ -126,9 +126,13 @@ proto = {
    },
    remove: function remove(arg){
 		"use strict";
-		arg.forEach(function (item, i){
-			removeOneTask(item, this);
-		}, this);
+		if (typeof arg === "number"){
+			removeOneTask(arg, this);
+		} else {
+			arg.forEach(function (item, i){
+				removeOneTask(item, this);
+			}, this);
+		}
 		return this;
    },
    filter: function filter(arg){
