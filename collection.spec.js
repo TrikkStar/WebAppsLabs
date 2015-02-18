@@ -111,8 +111,13 @@ describe('Your other TaskCollection functions', function(){
         expect(coll1.length()).to.equal(6);
         expect(coll1.has(id)).to.equal(false);
     });
-    it.skip('correctly removes multiple items', function(){
-    	//this testing case was overlooked in inital implimentation
+    it('correctly removes multiple items', function(){
+    	id = [];
+    	coll1.values.forEach(function (item, i){
+    		id.push(item.id);
+    	});
+    	coll1.remove(id);
+    	expect(coll1.isEmpty()).to.equal(true);
     });
 	it('correctly impliments newTask', function(){
 		coll2 = TaskCollection.new(task);
