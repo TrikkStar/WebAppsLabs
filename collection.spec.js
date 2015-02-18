@@ -24,9 +24,9 @@ function randomTasks(num){
 	//Returns an array of random tasks of a given length
 	var arr = [];
 	for (var i=0; i < num; i += 1){
-		var tsk = Task.new(), rand = Math.floor(Math.random() * 10);
+		var tsk = Task.new(), rand = Math.floor(Math.random() * 10) + 1;
 		tsk.setTitle(randomString(7));
-		for (var j=0; j < rand; j += 1){
+		for (var j = 0; j < rand; j += 1){
 			tsk.addTag(randomString(5));
 		}
 		arr.push(tsk);
@@ -56,7 +56,16 @@ describe('Your TaskCollection.get() function', function(){
 	tasks = randomTasks(10);
 	coll = TaskCollection.new(tasks);
 	it('properly gets tasks when given a function', function(){
-		
+		var fnc, tag;
+		tag = tasks[7].tags[0];
+		fnc = function(tsk){
+			for(var i = 0; i < tsk.tags.length; i += 1){
+				if (tsk.tags[i] === tag){
+					return true;
+				}
+			}
+		};
+		expect(coll.get(fnc)).to.equal(tasks[7]);
 	});
 	it('properly gets tasks when given a number', function(){
 		var id = tasks[7].id;
@@ -79,8 +88,17 @@ describe('Your TaskCollection.has() function', function(){
     var coll, tasks;
     tasks = randomTasks(5);
     coll = TaskCollection.new(tasks);
-    it.skip('works properly when given a function', function(){
-    	
+    it('works properly when given a function', function(){
+	var fnc, tag;
+		tag = tasks[4].tags[0];
+		fnc = function(tsk){
+			for(var i = 0; i < tsk.tags.length; i += 1){
+				if (tsk.tags[i] === tag){
+					return true;
+				}
+			}
+		};
+		expect(coll.has(fnc)).to.equal(true);    	
     });
     it('works properly when given a number', function(){
         var id = tasks[3].id;
