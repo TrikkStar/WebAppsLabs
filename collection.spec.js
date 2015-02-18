@@ -205,8 +205,9 @@ describe('Your TaskCollection.forEach() function', function(){
 });
 
 /*functions needed to test:
-has() (can recycle test from get changing what is looked for to t/f) (need to finish when we figure out how to handle functions and regular expressions)
-filter() (need to finish up when we know how to handle functions and regular expressions)
+has() regex
+filter() regex
+get() regex
 groupByTag()
 print()
 concat()*/

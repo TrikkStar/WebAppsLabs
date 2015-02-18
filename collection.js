@@ -42,8 +42,11 @@ function makeFunctionFromArg(arg){
 		return function(task){
 			return task.title === arg;
 		};
+	} else if (typeof arg === "object"){ // regex
+		return function(task){
+			return arg.test(task.title);
+		};
 	}
-    // need to determine if a regular expression can be evaluated the same as a string or not
 }
 
 function getIndex(arg, self){
