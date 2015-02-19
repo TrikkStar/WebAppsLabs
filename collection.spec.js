@@ -222,26 +222,46 @@ describe('Your TaskCollection.forEach() function', function(){
 });
 
 describe('Your new TaskCollection functions', function(){
-	var coll, tasks;
-	tasks = randomTasks(10);
-	coll = TaskCollection.new(tasks);
-	it.skip('correctly impliment .groupByTag()', function(){
-
+	it('correctly impliment .groupByTag()', function(){
+		var coll, group, tsk1, tsk2, tsk3, tsk4, tsk5, tsk6, tsk7, arr;
+		arr = [];
+		tsk1 = Task.fromString("First#One")
+		arr.push(tsk1);
+		tsk2 = Task.fromString("Second#Two")
+		arr.push(tsk2);
+		tsk3 = Task.fromString("Third#Three")
+		arr.push(tsk3);
+		tsk4 = Task.fromString("Fourth#One#Two")
+		arr.push(tsk4);
+		tsk5 = Task.fromString("Fifth#One#Three")
+		arr.push(tsk5);
+		tsk6 = Task.fromString("Sixth#Two#Three")
+		arr.push(tsk6);
+		tsk7 = Task.fromString("Seventh#One#Two#Three")
+		arr.push(tsk7);
+		coll = TaskCollection.new(arr);
+		group = coll.groupByTag();
+		expect(group).to.be.a("object");
+		expect(group).to.have.ownProperty("One", "Two", "Three");
+		expect(group.One.values).to.include(tsk1, tsk4, tsk5, tsk7);
+		expect(group.Two.values).to.include(tsk2, tsk4, tsk6, tsk7);
+		expect(group.Three.values).to.include(tsk3, tsk5, tsk6, tsk7);
 	});
 	it('correctly impliment .print()', function(){
-		var coll2, tsk, str, str2, date;
-		str = "Iamatitle#IamaTag#IamaTagToo";
-		tsk = Task.fromString(str);
-		tsk.toggleCompleted();
-		date = tsk.completedTime;
-		coll2 = TaskCollection.new();
-		coll2.add(tsk);
-		str2 = coll2.print();
+		var coll, task, str, str2, date;
+		task = Task.fromString("Iamatitle#IamaTag#IamaTagToo");
+		task.toggleCompleted();
+		date = task.completedTime;
+		coll = TaskCollection.new();
+		coll.add(task);
+		str2 = coll.print();
 		str = "Iamatitle " + date + " #IamaTag #IamaTagToo\n";
 		expect(str2).to.be.a('string');
 		expect(str2).to.equal(str);
 	});
 	it.skip('correctly impliment .concat()', function(){
-
+		var coll, tasks;
+		tasks = randomTasks(3);
+		coll = TaskCollection.new(tasks);
 	});
 });
