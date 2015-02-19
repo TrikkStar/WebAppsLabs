@@ -229,9 +229,17 @@ describe('Your new TaskCollection functions', function(){
 
 	});
 	it('correctly impliment .print()', function(){
-		var str = coll.print();
-		expect(str).to.be.a('string');
-		//console.log(str);
+		var coll2, tsk, str, str2, date;
+		str = "Iamatitle#IamaTag#IamaTagToo";
+		tsk = Task.fromString(str);
+		tsk.toggleCompleted();
+		date = tsk.completedTime;
+		coll2 = TaskCollection.new();
+		coll2.add(tsk);
+		str2 = coll2.print();
+		str = "Iamatitle " + date + " #IamaTag #IamaTagToo\n";
+		expect(str2).to.be.a('string');
+		expect(str2).to.equal(str);
 	});
 	it.skip('correctly impliment .concat()', function(){
 

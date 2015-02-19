@@ -77,12 +77,11 @@ function removeOneTask(task, self){
 
 function printTask(tsk){
 	"use strict";
-	console.log(tsk);
 	var str = tsk.title;
 	if (tsk.isCompleted()){
 		str = str + " " + tsk.completedTime;
 	}
-	if (tsk.hasTag()){
+	if (tsk.tags.length !== 0){
 		tsk.tags.forEach(function (item, i){
 			str = str + " #" + item;
 		});
