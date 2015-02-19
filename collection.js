@@ -195,8 +195,8 @@ proto = {
    },
    concat: function concat(coll){
 		"use strict";
-		coll.forEach(function (item, i){
-			this.add(item.values);
+		coll.values.forEach(function (item, i){
+			this.add(item);
 		}, this);
 		return this;
    }

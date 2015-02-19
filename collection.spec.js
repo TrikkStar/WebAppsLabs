@@ -259,9 +259,16 @@ describe('Your new TaskCollection functions', function(){
 		expect(str2).to.be.a('string');
 		expect(str2).to.equal(str);
 	});
-	it.skip('correctly impliment .concat()', function(){
-		var coll, tasks;
-		tasks = randomTasks(3);
-		coll = TaskCollection.new(tasks);
+	it('correctly impliment .concat()', function(){
+		var coll, coll2, tasks1, tasks2;
+		tasks1 = randomTasks(3);
+		tasks2 = randomTasks(3);
+		coll = TaskCollection.new(tasks1);
+		coll2 = TaskCollection.new(tasks2);
+		coll.concat(coll2);
+		expect(coll.length()).to.equal(6);
+		expect(coll2.length()).to.equal(3);
+		expect(coll.values).to.include(tasks2[0], tasks2[1], tasks2[2]);
+		expect(coll2.values).to.not.include(tasks1[0], tasks1[1], tasks1[2]);
 	});
 });
