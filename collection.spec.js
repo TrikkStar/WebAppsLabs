@@ -221,10 +221,19 @@ describe('Your TaskCollection.forEach() function', function(){
     });
 });
 
-/*functions needed to test:
-has() regex
-filter() regex
-get() regex
-groupByTag()
-print()
-concat()*/
+describe('Your new TaskCollection functions', function(){
+	var coll, tasks;
+	tasks = randomTasks(10);
+	coll = TaskCollection.new(tasks);
+	it.skip('correctly impliment .groupByTag()', function(){
+
+	});
+	it('correctly impliment .print()', function(){
+		var str = coll.print();
+		expect(str).to.be.a('string');
+		//console.log(str);
+	});
+	it.skip('correctly impliment .concat()', function(){
+
+	});
+});

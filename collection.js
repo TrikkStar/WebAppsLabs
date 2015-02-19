@@ -77,11 +77,12 @@ function removeOneTask(task, self){
 
 function printTask(tsk){
 	"use strict";
+	console.log(tsk);
 	var str = tsk.title;
 	if (tsk.isCompleted()){
 		str = str + " " + tsk.completedTime;
 	}
-	if (tsk.hasTags()){
+	if (tsk.hasTag()){
 		tsk.tags.forEach(function (item, i){
 			str = str + " #" + item;
 		});
@@ -187,6 +188,8 @@ proto = {
 		if (!this.isEmpty()){
 			this.values.forEach(function (item, i){
 				str = str + printTask(item);
+				// console.log("String " + str);
+				// console.log("\n");
 			});
 		}
 		return str;
