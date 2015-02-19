@@ -79,8 +79,14 @@ describe('Your TaskCollection.get() function', function(){
 		expect(coll.get(title)).to.equal(tasks[7]);
 		expect(coll.get(str)).to.equal(null);
 	});
-	it.skip('properly gets tasks when given a regular expression', function(){
-		
+	it('properly gets tasks when given a regular expression', function(){
+		var tsk, regex1, regex2;
+		tsk = Task.fromString("Iamthe8Walrus8JohnLennon");
+		coll.add(tsk);
+		regex1 = /8Walrus8/;
+		regex2 = /42/;
+		expect(coll.get(regex1)).to.equal(tsk);
+		expect(coll.get(regex2)).to.equal(null);
 	});
 });
 
@@ -112,8 +118,14 @@ describe('Your TaskCollection.has() function', function(){
         expect(coll.has(title)).to.equal(true);
         expect(coll.has(str)).to.equal(false);
     });
-    it.skip('works properly for regular expressions',function(){
-
+    it('works properly for regular expressions',function(){
+		var tsk, regex1, regex2;
+		tsk = Task.fromString("Iamthe8Walrus8JohnLennon");
+		coll.add(tsk);
+		regex1 = /8Walrus8/;
+		regex2 = /42/;
+		expect(coll.has(regex1)).to.equal(true);
+		expect(coll.has(regex2)).to.equal(false);
     });
 });
 
@@ -184,8 +196,13 @@ describe('Your TaskCollection.filter() function',function(){
         coll2 = coll.filter(title);
         expect(coll2.get(title)).to.equal(tasks[3]);
     });
-    it.skip('filters if given a regular expression',function(){
-
+    it('filters if given a regular expression',function(){
+    	var tsk, regex, coll2;
+		tsk = Task.fromString("Iamthe8Walrus8JohnLennon");
+		coll.add(tsk);
+		regex = /8Walrus8/;
+		coll2 = coll.filter(regex);
+		expect(coll2.get(regex)).to.equal(tsk);
     });
 });
 
