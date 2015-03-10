@@ -18,9 +18,9 @@ function makeNewList() {
    lst = Object.create(proto);
    sentinel = {
       value: null,
-      next: sentinel,
-      prev: sentinel
    };
+   sentinel.next = sentinel;
+   sentinel.prev = sentinel;
    lst.sentinel = sentinel;
    return lst;
 }
@@ -32,7 +32,8 @@ function makeNewList() {
 
 proto = {
 	isEmpty: function(){
-
+		console.log(this.sentinel);
+		return this.sentinel.next === this.sentinel;
 	},
 	length: function(){
 
