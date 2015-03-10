@@ -17,7 +17,7 @@ function makeNewList() {
 
    lst = Object.create(proto);
    sentinel = {
-      value: null,
+      value: null
    };
    sentinel.next = sentinel;
    sentinel.prev = sentinel;
@@ -32,11 +32,21 @@ function makeNewList() {
 
 proto = {
 	isEmpty: function(){
-		console.log(this.sentinel);
 		return this.sentinel.next === this.sentinel;
 	},
 	length: function(){
-
+		var curr, count;
+		if (this.isEmpty()){
+			return 0;
+		} else {
+			count = 0;
+			curr = this.sentinel.next;
+			while (curr !== this.sentinel){
+				curr = curr.next;
+				count = count + 1;
+			}
+			return count;
+		}
 	},
 	first: function(){
 

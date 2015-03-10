@@ -26,10 +26,13 @@ describe('Your prototype method', function(){
 		list = DLList.new();
 		expect(list.isEmpty()).to.be.true;
 		//add element(s) here
-		expect(list.isEmpty).to.be.false;
+		expect(list.isEmpty()).to.be.false;
 	});
 	it.skip('length() functions correctly', function(){
-
+		list = DLList.new();
+		expect(list.length()).to.equal(0);
+		//add elements
+		//test added elements
 	});
 	it.skip('first() functions correctly', function(){
 		
