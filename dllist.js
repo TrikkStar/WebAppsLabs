@@ -63,7 +63,14 @@ proto = {
 		}
 	},
 	insertAt: function(val, elem){
-
+		var temp = {
+			value: val,
+			next: elem.next,
+			prev: elem
+		};
+		temp.next.prev = temp;
+		elem.next = temp;
+		return temp;
 	},
 	unshift: function(){
 
