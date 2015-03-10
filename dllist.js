@@ -49,12 +49,20 @@ proto = {
 		}
 	},
 	first: function(){
-
+		if (this.isEmpty()){
+			throw "Invalid Call: list is empty";
+		} else {
+			return this.sentinel.next;
+		}
 	},
 	last: function(){
-
+		if (this.isEmpty()){
+			throw "Invalid Call: list is empty";
+		} else {
+			return this.sentinel.prev;
+		}
 	},
-	insertAt: function(){
+	insertAt: function(val, elem){
 
 	},
 	unshift: function(){
