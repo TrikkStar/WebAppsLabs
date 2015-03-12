@@ -83,14 +83,24 @@ proto = {
 		this.sentinel.prev = elem;
 		return this;
 	},
-	remove: function(){
-
+	remove: function(elem){
+		elem.prev.next = elem.next;
+		elem.next.prev = elem.prev;
+		return elem.value;
 	},
 	pop: function(){
-
+		if (this.isEmpty()){
+			throw "Invalid Call: list is empty";
+		} else {
+			return this.remove(this.sentinel.prev);
+		}
 	},
 	shift: function(){
-
+		if (this.isEmpty()){
+			throw "Invalid Call: list is empty";
+		} else {
+			return this.remove(this.sentinel.next);
+		}
 	},
 	isFirst: function(){
 
