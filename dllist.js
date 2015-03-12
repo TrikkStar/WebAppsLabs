@@ -78,23 +78,35 @@ proto = {
 	push: function(val){
 		return this.insertAt(val, this.sentinel.prev);
 	},
-	endAt: function(){
-
+	endAt: function(elem){
+		elem.next = this.sentinel;
+		this.sentinel.prev = elem;
+		return this;
 	},
-	remove: function(){
-
+	remove: function(elem){
+		elem.prev.next = elem.next;
+		elem.next.prev = elem.prev;
+		return elem.value;
 	},
 	pop: function(){
-
+		if (this.isEmpty()){
+			throw "Invalid Call: list is empty";
+		} else {
+			return this.remove(this.sentinel.prev);
+		}
 	},
 	shift: function(){
-
+		if (this.isEmpty()){
+			throw "Invalid Call: list is empty";
+		} else {
+			return this.remove(this.sentinel.next);
+		}
 	},
-	isFirst: function(){
-
+	isFirst: function(elem){
+		return elem === this.sentinel.next;
 	},
-	isLast: function(){
-
+	isLast: function(elem){
+		return elem === this.sentinel.prev;
 	},
 	iterator: function(){
 
