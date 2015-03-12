@@ -22,23 +22,48 @@ describe('Your makeNewList function', function(){
 });
 
 describe('Your prototype method', function(){
-	it.skip('isEmpty() functions correctly', function(){
+	it('isEmpty() functions correctly', function(){
+		var list;
 		list = DLList.new();
 		expect(list.isEmpty()).to.be.true;
-		//add element(s) here
+		list.unshift(1);
 		expect(list.isEmpty()).to.be.false;
 	});
-	it.skip('length() functions correctly', function(){
+	it('length() functions correctly', function(){
+		var list, item1, item2;
 		list = DLList.new();
+		expect(list.isEmpty()).to.be.true;
 		expect(list.length()).to.equal(0);
-		//add elements
-		//test added elements
+		item1 = list.push(1);
+		expect(list.length()).to.equal(1);
+		item2 = list.push(2);
+		expect(list.length()).to.equal(2);
 	});
-	it.skip('first() functions correctly', function(){
-		
+	it('first() functions correctly', function(){
+		var list, item1, item2, err;
+		var err = new ReferenceError("Invalid Call: list is empty");
+		list = DLList.new();
+		expect(list.isEmpty()).to.be.true;
+		expect(function(){list.isEmpty()}).to.throw(err);
+		item1 = list.push(1);
+		expect(list.isEmpty()).to.be.false;
+		expect(list.first()).to.not.throw(err);
+		expect(list.first()).to.equal(item1);
+		item2 = list.unshift(2);
+		expect(list.first()).to.equal(item2);
 	});
-	it.skip('last() functions correctly', function(){
-		
+	it('last() functions correctly', function(){
+		var list, item1, item2, err;
+		var err = new ReferenceError("Invalid Call: list is empty");
+		list = DLList.new();
+		expect(list.isEmpty()).to.be.true;
+		expect(function(){list.last()}).to.throw(err);
+		item1 = list.push(1);
+		expect(list.isEmpty()).to.be.false;
+		expect(list.last()).to.not.throw(err);
+		expect(list.last()).to.equal(item1);
+		item2 = list.push(2);
+		expect(list.last()).to.equal(item2);
 	});
 	it.skip('insertAt() functions correctly', function(){
 		
