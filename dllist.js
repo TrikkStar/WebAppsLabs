@@ -102,11 +102,11 @@ proto = {
 			return this.remove(this.sentinel.next);
 		}
 	},
-	isFirst: function(){
-
+	isFirst: function(elem){
+		return elem === this.sentinel.next;
 	},
-	isLast: function(){
-
+	isLast: function(elem){
+		return elem === this.sentinel.prev;
 	},
 	iterator: function(){
 
