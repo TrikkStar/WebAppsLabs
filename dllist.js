@@ -79,15 +79,9 @@ proto = {
 		return this.insertAt(val, this.sentinel.prev);
 	},
 	endAt: function(elem){
-		var curr = this.sentinel.next;
-		while (curr !== this.sentinel){
-			if (curr === elem){
-				curr.next = this.sentinel;
-				this.sentinel.prev = curr;
-				return this;
-			}
-			curr = curr.next;
-		}
+		elem.next = this.sentinel;
+		this.sentinel.prev = elem;
+		return this;
 	},
 	remove: function(){
 
