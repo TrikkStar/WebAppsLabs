@@ -72,11 +72,11 @@ proto = {
 		elem.next = temp;
 		return temp;
 	},
-	unshift: function(){
-
+	unshift: function(val){
+		return this.insertAt(val, this.sentinel);
 	},
-	push: function(){
-
+	push: function(val){
+		return this.insertAt(val, this.sentinel.prev);
 	},
 	endAt: function(){
 
