@@ -78,8 +78,16 @@ proto = {
 	push: function(val){
 		return this.insertAt(val, this.sentinel.prev);
 	},
-	endAt: function(){
-
+	endAt: function(elem){
+		var curr = this.sentinel.next;
+		while (curr !== this.sentinel){
+			if (curr === elem){
+				curr.next = this.sentinel;
+				this.sentinel.prev = curr;
+				return this;
+			}
+			curr = curr.next;
+		}
 	},
 	remove: function(){
 
