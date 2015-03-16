@@ -142,8 +142,16 @@ describe('Your prototype method', function(){
 		list.pop();
 		expect(list.isLast(item2)).to.be.true;
 	});
-	it.skip('iterator() functions correctly', function(){
-		
+	it('iterator() functions correctly', function(){
+		var list, item1, item2, item3, item4, ittr, arr;
+		list = DLList.new();
+		item1 = list.push(1);
+		item2 = list.push(2);
+		item3 = list.push(3);
+		item4 = list.push(4);
+		ittr = list.iterator();
+		arr = ittr.toArray();
+		console.log(arr);
 	});
 	it.skip('forEach() functions correctly', function(){
 		

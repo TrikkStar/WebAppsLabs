@@ -109,9 +109,10 @@ proto = {
 		return elem === this.sentinel.prev;
 	},
 	iterator: function(){
-
+		var hasNext = !this.isLast(this.first());
+		return Iterator.new(this.first(), hasNext);
 	},
-	forEach: function(){
+	forEach: function(func){
 
 	},
 	toArray: function(){
