@@ -50,14 +50,14 @@ proto = {
 	},
 	first: function(){
 		if (this.isEmpty()){
-			throw "Invalid Call: list is empty";
+			throw new Error("Invalid Call: list is empty");
 		} else {
 			return this.sentinel.next;
 		}
 	},
 	last: function(){
 		if (this.isEmpty()){
-			throw "Invalid Call: list is empty";
+			throw new Error("Invalid Call: list is empty");
 		} else {
 			return this.sentinel.prev;
 		}
