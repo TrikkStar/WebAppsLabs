@@ -43,7 +43,7 @@ describe('Your prototype method', function(){
 		var list, item1, item2;
 		list = DLList.new();
 		expect(list.isEmpty()).to.be.true;
-		expect(function(){list.isEmpty()}).to.throw(Error);
+		expect(function(){list.first()}).to.throw(Error);
 		item1 = list.push(1);
 		expect(list.isEmpty()).to.be.false;
 		expect(function(){list.first()}).to.not.throw(Error);
