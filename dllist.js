@@ -116,9 +116,8 @@ proto = {
 			return curr !== self.isLast();
 		};
 		next = function(){
-			if (hasNext()){
-				curr = curr.next;
-			}
+			var temp = curr.next;
+			return curr = temp;
 		};
 		return Iterator.new(next, hasNext);
 	},
