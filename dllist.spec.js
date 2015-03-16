@@ -30,38 +30,37 @@ describe('Your prototype method', function(){
 		expect(list.isEmpty()).to.be.false;
 	});
 	it('length() functions correctly', function(){
-		var list, item1, item2;
+		var list, iten;
 		list = DLList.new();
-		expect(list.isEmpty()).to.be.true;
 		expect(list.length()).to.equal(0);
-		item1 = list.push(1);
+		item = list.push(1);
 		expect(list.length()).to.equal(1);
-		item2 = list.push(2);
-		expect(list.length()).to.equal(2);
+		expect(list.pop()).to.equal(item.value);
+		expect(list.isEmpty()).to.be.true;
 	});
 	it('first() functions correctly', function(){
 		var list, item1, item2;
 		list = DLList.new();
-		expect(list.isEmpty()).to.be.true;
 		expect(function(){list.first()}).to.throw(Error);
 		item1 = list.push(1);
-		expect(list.isEmpty()).to.be.false;
 		expect(function(){list.first()}).to.not.throw(Error);
 		expect(list.first()).to.equal(item1);
 		item2 = list.unshift(2);
 		expect(list.first()).to.equal(item2);
+		list.shift();
+		expect(list.first()).to.equal(item1);
 	});
 	it('last() functions correctly', function(){
 		var list, item1, item2;
 		list = DLList.new();
-		expect(list.isEmpty()).to.be.true;
 		expect(function(){list.last()}).to.throw(Error);
 		item1 = list.push(1);
-		expect(list.isEmpty()).to.be.false;
 		expect(function(){list.last()}).to.not.throw(Error);
 		expect(list.last()).to.equal(item1);
 		item2 = list.push(2);
 		expect(list.last()).to.equal(item2);
+		list.pop();
+		expect(list.last()).to.equal(item1);
 	});
 	it('endAt() functions correctly', function(){
 		var list, item1, item2, item3;
@@ -69,7 +68,6 @@ describe('Your prototype method', function(){
 		item1 = list.push(1);
 		item3 = list.push(3);
 		item2 = list.insertAt(2,item1);
-		expect(list.isEmpty()).to.be.false;
 		expect(list.length()).to.equal(3);
 		expect(list.first()).to.equal(item1);
 		expect(list.last()).to.equal(item3);
@@ -84,7 +82,6 @@ describe('Your prototype method', function(){
 		item1 = list.push(1);
 		item3 = list.push(3);
 		item2 = list.insertAt(2,item1);
-		expect(list.isEmpty()).to.be.false;
 		expect(list.length()).to.equal(3);
 		expect(list.first()).to.equal(item1);
 		expect(list.last()).to.equal(item3);
@@ -101,30 +98,24 @@ describe('Your prototype method', function(){
 		var list, item1, item2, item3;
 		list = DLList.new();
 		item1 = list.push(1);
+		item2 = list.push(2) ;
 		item3 = list.push(3);
-		item2 = list.insertAt(2,item1);
-		expect(list.isEmpty()).to.be.false;
 		expect(list.length()).to.equal(3);
-		expect(list.first()).to.equal(item1);
 		expect(list.last()).to.equal(item3);
 		list.pop();
 		expect(list.length()).to.equal(2);
-		expect(list.first()).to.equal(item1);
 		expect(list.last()).to.equal(item2);
 	});
 	it('shift() functions correctly', function(){
 		var list, item1, item2, item3;
 		list = DLList.new();
 		item1 = list.push(1);
+		item2 = list.push(2);
 		item3 = list.push(3);
-		item2 = list.insertAt(2,item1);
-		expect(list.isEmpty()).to.be.false;
 		expect(list.length()).to.equal(3);
 		expect(list.first()).to.equal(item1);
-		expect(list.last()).to.equal(item3);
 		list.shift();
 		expect(list.length()).to.equal(2);
-		expect(list.last()).to.equal(item3);
 		expect(list.first()).to.equal(item2);
 	});
 	it('isFirst() functions correctly', function(){
@@ -133,13 +124,11 @@ describe('Your prototype method', function(){
 		item1 = list.push(1);
 		item3 = list.push(3);
 		item2 = list.insertAt(2,item1);
-		expect(list.isEmpty()).to.be.false;
-		expect(list.length()).to.equal(3);
-		expect(list.first()).to.equal(item1);
-		expect(list.last()).to.equal(item3);
 		expect(list.isFirst(item1)).to.be.true;
 		expect(list.isFirst(item2)).to.be.false;
 		expect(list.isFirst(item3)).to.be.false;
+		list.shift();
+		expect(list.isFirst(item2)).to.be.true;
 	});
 	it('isLast() functions correctly', function(){
 		var list, item1, item2, item3;
@@ -147,13 +136,11 @@ describe('Your prototype method', function(){
 		item1 = list.push(1);
 		item3 = list.push(3);
 		item2 = list.insertAt(2,item1);
-		expect(list.isEmpty()).to.be.false;
-		expect(list.length()).to.equal(3);
-		expect(list.first()).to.equal(item1);
-		expect(list.last()).to.equal(item3);
 		expect(list.isLast(item1)).to.be.false;
 		expect(list.isLast(item2)).to.be.false;
 		expect(list.isLast(item3)).to.be.true;
+		list.pop();
+		expect(list.isLast(item2)).to.be.true;
 	});
 	it.skip('iterator() functions correctly', function(){
 		
