@@ -109,8 +109,18 @@ proto = {
 		return elem === this.sentinel.prev;
 	},
 	iterator: function(){
-		var hasNext = !this.isLast(this.first());
-		return Iterator.new(this.first(), hasNext);
+		var hasNext, next, curr, self;
+		self = this;
+		curr = this.first();
+		hasNext = function(){
+			return curr !== self.isLast();
+		};
+		next = function(){
+			if (hasNext()){
+				curr = curr.next;
+			}
+		};
+		return Iterator.new(next, hasNext);
 	},
 	forEach: function(func){
 
