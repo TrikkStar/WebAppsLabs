@@ -143,15 +143,16 @@ describe('Your prototype method', function(){
 		expect(list.isLast(item2)).to.be.true;
 	});
 	it('iterator() functions correctly', function(){
-		var list, item1, item2, item3, item4, ittr, arr;
+		var list, item1, item2, item3, item4, arr;
 		list = DLList.new();
 		item1 = list.push(1);
 		item2 = list.push(2);
 		item3 = list.push(3);
 		item4 = list.push(4);
-		ittr = list.iterator();
-		arr = ittr.toArray();
-		console.log(arr);
+		arr = list.iterator().toArray();
+		expect(arr.length).to.equal(4);
+		expect(arr[2]).to.equal(item3);
+		expect(arr[3].value).to.equal(4);
 	});
 	it.skip('forEach() functions correctly', function(){
 		

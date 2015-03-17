@@ -111,13 +111,12 @@ proto = {
 	iterator: function(){
 		var hasNext, next, curr, self;
 		self = this;
-		curr = this.first();
+		curr = this.sentinel;
 		hasNext = function(){
-			return curr !== self.sentinel;
+			return curr.next !== self.sentinel;
 		};
 		next = function(){
-			var temp = curr.next;
-			return curr = temp;
+			return curr = curr.next;
 		};
 		return Iterator.new(next, hasNext);
 	},
