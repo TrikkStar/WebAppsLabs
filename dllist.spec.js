@@ -170,8 +170,15 @@ describe('Your prototype method', function(){
 		expect(arr[2]).to.equal(item3);
 		expect(arr[3].value).to.equal(5);
 	});
-	it.skip('toArray() functions correctly', function(){
-		
+	it('toArray() functions correctly', function(){
+		var list, arr;
+		list = DLList.new();
+		list.push(1);
+		list.push(2);
+		list.push(3);
+		list.push(4);
+		arr = list.toArray();
+		expect(arr[3]).to.equal(4);
 	});
 	it.skip('iterateFrom() functions correctly', function(){
 		

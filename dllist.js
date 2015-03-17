@@ -129,7 +129,11 @@ proto = {
 		return this;
 	},
 	toArray: function(){
-
+		var arr = [];
+		this.forEach(function(n){
+			arr.push(n);
+		});
+		return arr;
 	},
 	iterateFrom: function(){
 
