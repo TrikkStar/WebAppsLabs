@@ -154,8 +154,21 @@ describe('Your prototype method', function(){
 		expect(arr[2]).to.equal(item3);
 		expect(arr[3].value).to.equal(4);
 	});
-	it.skip('forEach() functions correctly', function(){
-		
+	it('forEach() functions correctly', function(){
+		var list, item1, item2, item3, item4, arr, func;
+		list = DLList.new();
+		item1 = list.push(1);
+		item2 = list.push(2);
+		item3 = list.push(3);
+		item4 = list.push(4);
+		func = function(n){
+			return n += 1;
+		};
+		list.forEach(func);
+		arr = list.iterator().toArray();
+		expect(arr.length).to.equal(4);
+		expect(arr[2]).to.equal(item3);
+		expect(arr[3].value).to.equal(5);
 	});
 	it.skip('toArray() functions correctly', function(){
 		

@@ -116,12 +116,17 @@ proto = {
 			return curr.next !== self.sentinel;
 		};
 		next = function(){
-			return curr = curr.next;
+			curr = curr.next;
+			return curr;
 		};
 		return Iterator.new(next, hasNext);
 	},
 	forEach: function(func){
-
+		var arr = this.iterator().toArray();
+		arr.forEach(function(item){
+			item.value = func(item.value);
+		});
+		return this;
 	},
 	toArray: function(){
 
