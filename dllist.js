@@ -135,10 +135,18 @@ proto = {
 		});
 		return arr;
 	},
-	iterateFrom: function(){
-
+	iterateFrom: function(item){
+		var arr, arr2, i;
+		arr = this.iterator().toArray();
+		for(i = 0; i < arr.length; i += 1){
+			if(item === arr[i]){
+				arr2 = arr.slice(i);
+				console.log(Iterator.sequence(arr2[0]));
+				return Iterator.fromArray(arr2);
+			}
+		}
 	},
-	reverseIterateFrom: function(){
+	reverseIterateFrom: function(item){
 
 	}
 };
