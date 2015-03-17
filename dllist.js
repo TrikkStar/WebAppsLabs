@@ -113,7 +113,7 @@ proto = {
 		self = this;
 		curr = this.first();
 		hasNext = function(){
-			return curr !== self.isLast();
+			return curr !== self.sentinel;
 		};
 		next = function(){
 			var temp = curr.next;
