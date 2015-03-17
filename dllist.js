@@ -141,7 +141,7 @@ proto = {
 		for(i = 0; i < arr.length; i += 1){
 			if(item === arr[i]){
 				arr2 = arr.slice(i);
-				console.log(Iterator.sequence(arr2[0]));
+				//console.log(Iterator.sequence(arr2[0]));
 				return Iterator.fromArray(arr2);
 			}
 		}
