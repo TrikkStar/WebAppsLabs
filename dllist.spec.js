@@ -178,9 +178,11 @@ describe('Your prototype method', function(){
 		list.push(3);
 		list.push(4);
 		arr = list.toArray();
+		expect(arr.length).to.equal(4);
+		expect(arr[0]).to.equal(1);
 		expect(arr[3]).to.equal(4);
 	});
-	it('iterateFrom() functions correctly', function(){
+	it.skip('iterateFrom() functions correctly', function(){
 		var list, ittr, item;
 		list = DLList.new();
 		list.push(1);
@@ -191,22 +193,24 @@ describe('Your prototype method', function(){
 		list.push(6);
 		ittr = list.iterateFrom(item);
 		console.log(ittr);
-		// expect(ittr.length()).to.equal(4);
-		// expect(ittr[0]).to.equal(item);
-		// expect(ittr[3].value).to.equal(6);
+		expect(ittr.length).to.equal(4);
+		expect(ittr[0]).to.equal(item);
+		expect(ittr[3].value).to.equal(6);
 	});
-	it('reverseIterateFrom() functions correctly', function(){
-		var list, item1, item2, item3, item4, arr;
+	it.skip('reverseIterateFrom() functions correctly', function(){
+		var list, ittr, item;
 		list = DLList.new();
-		item1 = list.push(1);
-		item2 = list.push(2);
-		item3 = list.push(3);
-		item4 = list.push(4);
-		arr = list.reverseIterateFrom().toArray();
-		expect(arr.length).to.equal(4);
-		expect(arr[3]).to.equal(item2);
-		expect(arr[2].value).to.equal(3);
-		expect(arr[1]).to.equal(item4);
-		expect(arr[4].value).to.equal(1);
+		list.push(1);
+		list.push(2);
+		item = list.push(3);
+		list.push(4);
+		list.push(5);
+		list.push(6);
+		ittr = list.reverseIterateFrom(item);
+		console.log(ittr);
+		expect(ittr.length).to.equal(3);
+		expect(ittr[0]).to.equal(item);
+		expect(ittr[1].value).to.equal(2);
+		expect(ittr[2].value).to.equal(1);
 	});
 });
