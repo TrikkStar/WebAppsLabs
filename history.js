@@ -40,10 +40,7 @@ proto = {
 		return false;
 	},
 	canUndo: function(){
-		if (this.current !== null){
-			return !this.list.isFirst(this.current);
-		}
-		return false;
+		return this.current !== null;
 	},
 	redo: function(){
 		if (this.canRedo()){
@@ -55,17 +52,29 @@ proto = {
 	},
 	undo: function(){
 		if (this.canUndo()){
-			this.current = this.current.prev;
 			this.current.value.unexecute();
+			if (this.list.isFirst(this.current)){
+				this.current = null;
+			} else {
+				this.current = this.current.prev;
+			}
 		} else {
 			throw new Error("Invalid Call: no prior commands");
 		}
 	},
 	undoableIterator: function(){
-
+		// if (this.canRedo()){
+		// 	return this.list.reverseIterateFrom(this.current);
+		// } else {
+		// 	return this.list.reverseIterateFrom(this.current.prev);
+		// }
 	},
 	redoableIterator: function(){
-
+		// if (this.canUndo()){
+		// 	return this.list.reverseIterateFrom(this.current);
+		// } else {
+		// 	return this.list.reverseIterateFrom(this.current.prev);
+		// }
 	}
 };
 
