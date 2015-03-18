@@ -136,7 +136,6 @@ proto = {
 		return arr;
 	},
 	iterateFrom: function(item){
-
 		var hasNext, next, curr, self;
 		self = this;
 		curr = item.prev;
@@ -150,11 +149,18 @@ proto = {
 		return Iterator.new(next, hasNext);
 	},
 	reverseIterateFrom: function(item){
-       //once you figure out iterateFrom, it's the same but in reverse.
-        
-        
-    },
-
+		var hasPrev, prev, curr, self;
+		self = this;
+		curr = item.next;
+		hasPrev = function(){
+			return curr.prev !== self.sentinel;
+		};
+		prev = function(){
+			curr = curr.prev;
+			return curr;
+		};
+		return Iterator.new(prev, hasPrev);
+    }
 };
 
 

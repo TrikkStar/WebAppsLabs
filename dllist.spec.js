@@ -196,7 +196,7 @@ describe('Your prototype method', function(){
 		expect(ittr[0]).to.equal(item);
 		expect(ittr[3].value).to.equal(6);
 	});
-	it.skip('reverseIterateFrom() functions correctly', function(){
+	it('reverseIterateFrom() functions correctly', function(){
 		var list, ittr, item;
 		list = DLList.new();
 		list.push(1);
@@ -205,8 +205,7 @@ describe('Your prototype method', function(){
 		list.push(4);
 		list.push(5);
 		list.push(6);
-		ittr = list.reverseIterateFrom(item);
-		console.log(ittr);
+		ittr = list.reverseIterateFrom(item).toArray();
 		expect(ittr.length).to.equal(3);
 		expect(ittr[0]).to.equal(item);
 		expect(ittr[1].value).to.equal(2);
