@@ -63,18 +63,14 @@ proto = {
 		}
 	},
 	undoableIterator: function(){
-		// if (this.canRedo()){
-		// 	return this.list.reverseIterateFrom(this.current);
-		// } else {
-		// 	return this.list.reverseIterateFrom(this.current.prev);
-		// }
+		if (this.canUndo()){
+			return this.list.reverseIterateFrom(this.current);
+		}
 	},
 	redoableIterator: function(){
-		// if (this.canUndo()){
-		// 	return this.list.reverseIterateFrom(this.current);
-		// } else {
-		// 	return this.list.reverseIterateFrom(this.current.prev);
-		// }
+		if (this.canRedo()){
+			return this.list.iterateFrom(this.current.next);
+		}
 	}
 };
 
