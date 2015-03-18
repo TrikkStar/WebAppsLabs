@@ -147,8 +147,20 @@ proto = {
 		}
 	},
 	reverseIterateFrom: function(item){
+        var hasPrev, previous, curr, self;
+        self = this;
+        curr = this.sentinel;
+        hasPrev = function(){
+            return curr.previous !== self.sentinel;
+        };
+        previous = function(){
+            curr = curr.previous;
+            return curr;
+        };
+        return Iterator.new(previous, hasPrev);
+        
+    },
 
-	}
 };
 
 
