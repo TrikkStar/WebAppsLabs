@@ -36,8 +36,9 @@ proto = {
 	canRedo: function(){
 		if (this.current !== null){
 			return !this.list.isLast(this.current);
+		} else {
+			return !this.list.isEmpty();
 		}
-		return false;
 	},
 	canUndo: function(){
 		return this.current !== null;
