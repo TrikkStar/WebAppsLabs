@@ -46,7 +46,12 @@ proto = {
 		return false;
 	},
 	redo: function(){
-
+		if (this.canRedo()){
+			this.current = this.current.next;
+			this.current.value.execute();
+		} else {
+			throw new Error("Invalid Call: no latter commands");
+		}
 	},
 	undo: function(){
 
