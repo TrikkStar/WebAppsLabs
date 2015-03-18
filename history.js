@@ -25,8 +25,30 @@ function makeNewHistory() {
  */
 
 proto = {
-   // Add instance methods here
+	add: function(cmd){
 
+	},
+	canRedo: function(){
+		if (this.current !== null){
+			return !this.list.isLast(this.current);
+		}
+		return false;
+	},
+	canUndo: function(){
+
+	},
+	redo: function(){
+
+	},
+	undo: function(){
+
+	},
+	undoableIterator: function(){
+
+	},
+	redoableIterator: function(){
+
+	}
 };
 
 
