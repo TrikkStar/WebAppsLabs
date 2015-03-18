@@ -54,7 +54,12 @@ proto = {
 		}
 	},
 	undo: function(){
-
+		if (this.canUndo()){
+			this.current = this.current.prev;
+			this.current.value.unexecute();
+		} else {
+			throw new Error("Invalid Call: no prior commands");
+		}
 	},
 	undoableIterator: function(){
 
