@@ -150,7 +150,7 @@ describe('Your prototype method', function(){
 		item3 = list.push(3);
 		item4 = list.push(4);
 		arr = list.iterator().toArray();
-		expect(arr.length()).to.equal(4);
+		expect(arr.length).to.equal(4);
 		expect(arr[2]).to.equal(item3);
 		expect(arr[3].value).to.equal(4);
 	});
@@ -166,7 +166,7 @@ describe('Your prototype method', function(){
 		};
 		list.forEach(func);
 		arr = list.iterator().toArray();
-		expect(arr.length()).to.equal(4);
+		expect(arr.length).to.equal(4);
 		expect(arr[2]).to.equal(item3);
 		expect(arr[3].value).to.equal(5);
 	});
@@ -195,7 +195,7 @@ describe('Your prototype method', function(){
 		// expect(ittr[0]).to.equal(item);
 		// expect(ittr[3].value).to.equal(6);
 	});
-	it.skip('reverseIterateFrom() functions correctly', function(){
+	it('reverseIterateFrom() functions correctly', function(){
 		var list, item1, item2, item3, item4, arr;
 		list = DLList.new();
 		item1 = list.push(1);
@@ -203,7 +203,7 @@ describe('Your prototype method', function(){
 		item3 = list.push(3);
 		item4 = list.push(4);
 		arr = list.reverseIterateFrom().toArray();
-		expect(arr.length()).to.equal(4);
+		expect(arr.length).to.equal(4);
 		expect(arr[3]).to.equal(item2);
 		expect(arr[2].value).to.equal(3);
 		expect(arr[1]).to.equal(item4);
