@@ -136,15 +136,18 @@ proto = {
 		return arr;
 	},
 	iterateFrom: function(item){
-		var arr, arr2, i;
-		arr = this.iterator().toArray();
-		for(i = 0; i < arr.length; i += 1){
-			if(item === arr[i]){
-				arr2 = arr.slice(i);
-				//console.log(Iterator.sequence(arr2[0]));
-				return Iterator.fromArray(arr2);
-			}
-		}
+
+		var hasNext, next, curr, self;
+		self = this;
+		curr = item.prev;
+		hasNext = function(){
+			return curr.next !== self.sentinel;
+		};
+		next = function(){
+			curr = curr.next;
+			return curr;
+		};
+		return Iterator.new(next, hasNext);
 	},
 	reverseIterateFrom: function(item){
        //once you figure out iterateFrom, it's the same but in reverse.

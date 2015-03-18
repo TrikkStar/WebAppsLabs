@@ -182,7 +182,7 @@ describe('Your prototype method', function(){
 		expect(arr[0]).to.equal(1);
 		expect(arr[3]).to.equal(4);
 	});
-	it.skip('iterateFrom() functions correctly', function(){
+	it('iterateFrom() functions correctly', function(){
 		var list, ittr, item;
 		list = DLList.new();
 		list.push(1);
@@ -191,8 +191,7 @@ describe('Your prototype method', function(){
 		list.push(4);
 		list.push(5);
 		list.push(6);
-		ittr = list.iterateFrom(item);
-		console.log(ittr);
+		ittr = list.iterateFrom(item).toArray();
 		expect(ittr.length).to.equal(4);
 		expect(ittr[0]).to.equal(item);
 		expect(ittr[3].value).to.equal(6);
